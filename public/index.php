@@ -3,12 +3,6 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Pedrojaraujo\Biblioteca\Core\Router;
-use Dotenv\Dotenv
-
-
-// Carrega as variáveis de ambiente
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
 
 //Carrega rotas
 $router = new Router();

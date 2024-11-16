@@ -1,7 +1,7 @@
 <?php
 // src/Core/Request.php
 
-namespace Pedrojaraujo\Biblioteca\Core
+namespace Pedrojaraujo\Biblioteca\Core;
 
 
 class Request

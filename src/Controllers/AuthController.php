@@ -9,15 +9,27 @@ use PDO;
 
 class AuthController
 {
-    private $secretKey = "MINHA_CHAVE_SECRETA";
+    private $secretKey;
+
+    public function __construct()
+    {
+        $this->secretKey = $_ENV['JWT_SECRET_KEY'];
+        if (!$this->secretKey) {
+            throw new \Exception('Chave secreta JWT não definida. Verifique o arquivo .env.');
+        }
+    }
 
     public function login()
     {
-
         $data = json_decode(file_get_contents('php://input'), true);
         $username = $data['user'] ?? null;
         $password = $data['pass'] ?? null;
 
+        if (!$username || !$password) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Credenciais incompletas']);
+            return;
+        }
 
         $db = new Database();
         $pdo = $db->getPdo();
@@ -48,9 +60,11 @@ class AuthController
     {
         $headers = getallheaders();
         $authHeader = $headers['Authorization'] ?? '';
-        [$bearer, $token] = explode(' ', $authHeader);
+        [$bearer, $token] = explode(' ', $authHeader) + [null, null];
 
         if ($bearer !== 'Bearer' || empty($token)) {
+            http_response_code(401);
+            echo json_encode(['error' => 'Token inválido ou ausente']);
             return false;
         }
 
@@ -59,7 +73,7 @@ class AuthController
             return $decoded;
         } catch (\Exception $e) {
             http_response_code(401);
-            echo json_encode(['error' => 'Token inválido ou expirado']);
+            echo json_encode(['error' => 'Falha ao validar token']);
             return false;
         }
     }

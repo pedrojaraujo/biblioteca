@@ -3,24 +3,46 @@
 namespace Biblioteca\Controllers;
 
 use Biblioteca\Models\Book;
+use Biblioteca\Controllers\AuthController;
 
 class BookController
 {
     private $bookModel;
+    private $auth;
 
     public function __construct()
     {
         $this->bookModel = new Book();
+        $this->auth = new AuthController();
+    }
+
+    private function requireAuth()
+    {
+        $decoded = $this->auth->validateToken();
+        if (!$decoded) {
+            http_response_code(401);
+            $this->jsonResponse(['error' => 'Login não está ativo']);
+            return false;
+        }
+        return true;
     }
 
     public function index()
     {
+        if (!$this->requireAuth()) {
+            return;
+        }
+
         $books = $this->bookModel->getAllBooks();
         $this->jsonResponse($books);
     }
 
     public function addBook()
     {
+        if (!$this->requireAuth()) {
+            return;
+        }
+
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (!$this->validateBookData($data)) {
@@ -41,6 +63,10 @@ class BookController
 
     public function updateBook()
     {
+        if (!$this->requireAuth()) {
+            return;
+        }
+
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (!$this->validateBookData($data)) {
@@ -61,6 +87,10 @@ class BookController
 
     public function deleteBook()
     {
+        if (!$this->requireAuth()) {
+            return;
+        }
+
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (!$this->validateBookData($data, true)) {

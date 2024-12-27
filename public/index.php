@@ -4,9 +4,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Biblioteca\Router\Router;
 use Biblioteca\Controllers\BookController;
+use Biblioteca\Controllers\AuthController;
 
 $router = new Router();
 
+$router->add('/login', [new AuthController(), 'login'], 'POST');
 $router->add('/', [new BookController(), 'index']);
 $router->add('/add-book', [new BookController(), 'addBook'], 'POST');
 $router->add('/update-book', [new BookController(), 'updateBook'], 'PUT');

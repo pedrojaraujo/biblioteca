@@ -1,0 +1,15 @@
+{
+    "name": "pedrojaraujo/biblioteca",
+    "description": "Gerenciador de biblioteca",
+    "autoload": {
+        "psr-4": {
+            "Biblioteca\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pedrojaraujo"
+        }
+    ],
+    "require": {}
+}

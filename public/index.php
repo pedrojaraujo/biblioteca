@@ -15,7 +15,4 @@ $router->add('/delete-book', [new BookController(), 'deleteBook'], 'DELETE');
 $uri = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
 $method = $_SERVER['REQUEST_METHOD'];
 
-echo "URI: $uri\n";
-echo "Method: $method\n";
-
 $router->dispatch($uri, $method);

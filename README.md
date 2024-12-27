@@ -30,9 +30,28 @@ Este projeto não tem como objetivo ser uma solução de produção, mas sim um 
 - **Validação de JWT**: Protege rotas da API com a verificação do token JWT.
 - **Gerenciamento de Configurações**: Variáveis de configuração carregadas de arquivos `.env` e `config.php`.
 
+## Testes
+
+Todos os testes foram realizados utilizando o [Postman](https://www.postman.com/). O Postman foi usado para testar as rotas da API, realizar requisições HTTP e validar o funcionamento da autenticação com JWT, além das operações CRUD no banco de dados.
+
 ## Como Rodar o Projeto
 
 1. **Clone o repositório**:
 
    ```bash
    git clone https://github.com/pedrojaraujo/biblioteca.git
+
+2. **Navegue até o diretório do projeto**:
+
+   ```bash
+   cd biblioteca
+
+3. **Instale as dependências do Composer**:
+
+   ```bash
+   composer install
+
+4. **Inicie o servidor**:
+
+   ```bash
+   php -S localhost:8000 -t public

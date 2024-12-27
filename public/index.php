@@ -2,18 +2,14 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Biblioteca\Router\Router;
-use Biblioteca\Controllers\BookController;
-use Biblioteca\Controllers\AuthController;
 use Dotenv\Dotenv;
-
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-if (!isset($_ENV['JWT_SECRET_KEY']) || empty($_ENV['JWT_SECRET_KEY'])) {
-    throw new \Exception('Variável JWT_SECRET_KEY não definida no arquivo .env');
-}
+use Biblioteca\Router\Router;
+use Biblioteca\Controllers\BookController;
+use Biblioteca\Controllers\AuthController;
 
 $router = new Router();
 

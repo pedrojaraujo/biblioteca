@@ -21,6 +21,8 @@ class AuthController
 
     public function login()
     {
+        header('Content-Type: application/json'); // Define o cabeçalho padrão como JSON
+
         $data = json_decode(file_get_contents('php://input'), true);
         $username = $data['user'] ?? null;
         $password = $data['pass'] ?? null;
@@ -48,13 +50,13 @@ class AuthController
             ];
 
             $jwt = JWT::encode($payload, $this->secretKey, 'HS256');
-            header('Content-Type: application/json');
             echo json_encode(['login' => 'Sucesso!', 'token' => $jwt]);
         } else {
             http_response_code(401);
             echo json_encode(['error' => 'Credenciais inválidas']);
         }
     }
+
 
     public function validateToken()
     {

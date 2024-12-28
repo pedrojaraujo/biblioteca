@@ -24,7 +24,7 @@ use Biblioteca\Controllers\AuthController;
 $router = new Router();
 
 $router->add('/login', [new AuthController(), 'login'], 'POST');
-$router->add('/', [new BookController(), 'index']);
+$router->add('/books', [new BookController(), 'index']);
 $router->add('/add-book', [new BookController(), 'addBook'], 'POST');
 $router->add('/update-book', [new BookController(), 'updateBook'], 'PUT');
 $router->add('/delete-book', [new BookController(), 'deleteBook'], 'DELETE');

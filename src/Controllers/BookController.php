@@ -52,11 +52,11 @@ class BookController
 
         if (isset($data[0]) && is_array($data[0])) {
             foreach ($data as $book) {
-                $this->bookModel->addBook($book['title'], $book['author']);
+                $this->bookModel->addBook($book['titulo'], $book['autor']);
             }
             $this->jsonResponse(['message' => 'Livros adicionados com sucesso!']);
         } else {
-            $this->bookModel->addBook($data['title'], $data['author']);
+            $this->bookModel->addBook($data['titulo'], $data['autor']);
             $this->jsonResponse(['message' => 'Livro adicionado com sucesso!']);
         }
     }
@@ -76,11 +76,11 @@ class BookController
 
         if (isset($data[0]) && is_array($data[0])) {
             foreach ($data as $book) {
-                $this->bookModel->updateBook($book['id'], $book['title'], $book['author']);
+                $this->bookModel->updateBook($book['id'], $book['titulo'], $book['autor']);
             }
             $this->jsonResponse(['message' => 'Livros atualizados com sucesso!']);
         } else {
-            $this->bookModel->updateBook($data['id'], $data['title'], $data['author']);
+            $this->bookModel->updateBook($data['id'], $data['titulo'], $data['autor']);
             $this->jsonResponse(['message' => 'Livro atualizado com sucesso!']);
         }
     }
@@ -118,7 +118,7 @@ class BookController
                         return false;
                     }
                 } else {
-                    if (empty($book['title']) || empty($book['author'])) {
+                    if (empty($book['titulo']) || empty($book['autor'])) {
                         return false;
                     }
                 }
@@ -129,7 +129,7 @@ class BookController
                     return false;
                 }
             } else {
-                if (empty($data['title']) || empty($data['author'])) {
+                if (empty($data['titulo']) || empty($data['autor'])) {
                     return false;
                 }
             }

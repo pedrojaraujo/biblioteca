@@ -16,25 +16,25 @@ class Book
 
     public function getAllBooks()
     {
-        $stmt = $this->pdo->query("SELECT * FROM books");
+        $stmt = $this->pdo->query("SELECT * FROM livros");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addBook($title, $author)
+    public function addBook($titulo, $autor)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO books (title, author) VALUES (:title, :author)");
-        $stmt->execute(['title' => $title, 'author' => $author]);
+        $stmt = $this->pdo->prepare("INSERT INTO livros (titulo, autor) VALUES (:titulo, :autor)");
+        $stmt->execute(['titulo' => $titulo, 'autor' => $autor]);
     }
 
-    public function updateBook($id, $title, $author)
+    public function updateBook($id, $titulo, $autor)
     {
-        $stmt = $this->pdo->prepare("UPDATE books SET title = :title, author = :author WHERE id = :id");
-        $stmt->execute(['id' => $id, 'title' => $title, 'author' => $author]);
+        $stmt = $this->pdo->prepare("UPDATE livros SET titulo = :titulo, autor = :autor WHERE id = :id");
+        $stmt->execute(['id' => $id, 'titulo' => $titulo, 'autor' => $autor]);
     }
 
     public function deleteBook($id)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM books WHERE id = :id");
+        $stmt = $this->pdo->prepare("DELETE FROM livros WHERE id = :id");
         $stmt->execute(['id' => $id]);
     }
 }

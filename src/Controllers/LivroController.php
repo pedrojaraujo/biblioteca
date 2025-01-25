@@ -2,26 +2,33 @@
 
 namespace Biblioteca\Controllers;
 
-use Biblioteca\Models\Book;
+use Biblioteca\Models\Livro;
 use Biblioteca\Controllers\AuthController;
+use Smarty\Exception;
 
-class BookController
+class LivroController
 {
-    private $bookModel;
+    private $livroModel;
     private $auth;
+    private $smarty;
 
     public function __construct()
     {
-        $this->bookModel = new Book();
+        $this->livroModel = new Livro();
         $this->auth = new AuthController();
+        $this->smarty = getSmarty();
     }
 
+    /**
+     * @throws Exception
+     */
     private function requireAuth()
     {
         $decoded = $this->auth->validateToken();
         if (!$decoded) {
             http_response_code(401);
-            $this->jsonResponse(['error' => 'Login não está ativo']);
+            $this->smarty->assign('error', 'Login não está ativo');
+            $this->smarty->display('error.tpl');
             return false;
         }
         return true;
@@ -33,8 +40,9 @@ class BookController
             return;
         }
 
-        $books = $this->bookModel->getAllBooks();
-        $this->jsonResponse($books);
+        $livros = $this->livroModel->getAllBooks();
+        $this->smarty->assign('livros', $livros);
+        $this->smarty->display('livros/lista.tpl');
     }
 
     public function addBook()
@@ -51,12 +59,12 @@ class BookController
         }
 
         if (isset($data[0]) && is_array($data[0])) {
-            foreach ($data as $book) {
-                $this->bookModel->addBook($book['titulo'], $book['autor']);
+            foreach ($data as $livro) {
+                $this->livroModel->addBook($livro['titulo'], $livro['autor']);
             }
             $this->jsonResponse(['message' => 'Livros adicionados com sucesso!']);
         } else {
-            $this->bookModel->addBook($data['titulo'], $data['autor']);
+            $this->livroModel->addBook($data['titulo'], $data['autor']);
             $this->jsonResponse(['message' => 'Livro adicionado com sucesso!']);
         }
     }
@@ -70,19 +78,22 @@ class BookController
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (!$this->validateBookData($data)) {
-            $this->jsonResponse(['error' => 'Dados inválidos']);
+            $this->smarty->assign('error', 'Dados inválidos');
+            $this->smarty->display('error.tpl');
             return;
         }
 
         if (isset($data[0]) && is_array($data[0])) {
-            foreach ($data as $book) {
-                $this->bookModel->updateBook($book['id'], $book['titulo'], $book['autor']);
+            foreach ($data as $livro) {
+                $this->livroModel->updateBook($livro['id'], $livro['titulo'], $livro['autor']);
             }
-            $this->jsonResponse(['message' => 'Livros atualizados com sucesso!']);
+            $this->smarty->assign('message', 'Livros atualizados com sucesso!');
         } else {
-            $this->bookModel->updateBook($data['id'], $data['titulo'], $data['autor']);
-            $this->jsonResponse(['message' => 'Livro atualizado com sucesso!']);
+            $this->livroModel->updateBook($data['id'], $data['titulo'], $data['autor']);
+            $this->smarty->assign('message', 'Livro atualizado com sucesso!');
         }
+
+        $this->smarty->display('success.tpl');
     }
 
     public function deleteBook()
@@ -94,31 +105,34 @@ class BookController
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (!$this->validateBookData($data, true)) {
-            $this->jsonResponse(['error' => 'Dados inválidos']);
+            $this->smarty->assign('error', 'Dados inválidos');
+            $this->smarty->display('error.tpl');
             return;
         }
 
         if (isset($data[0]) && is_array($data[0])) {
             foreach ($data as $book) {
-                $this->bookModel->deleteBook($book['id']);
+                $this->livroModel->deleteBook($book['id']);
             }
-            $this->jsonResponse(['message' => 'Livros deletados com sucesso!']);
+            $this->smarty->assign('message', 'Livros deletados com sucesso!');
         } else {
-            $this->bookModel->deleteBook($data['id']);
+            $this->livroModel->deleteBook($data['id']);
             $this->jsonResponse(['message' => 'Livro deletado com sucesso!']);
         }
+
+        $this->smarty->display('success.tpl');
     }
 
     private function validateBookData($data, $isDelete = false)
     {
         if (is_array($data[0])) {
-            foreach ($data as $book) {
+            foreach ($data as $livro) {
                 if ($isDelete) {
-                    if (empty($book['id'])) {
+                    if (empty($livro['id'])) {
                         return false;
                     }
                 } else {
-                    if (empty($book['titulo']) || empty($book['autor'])) {
+                    if (empty($livro['titulo']) || empty($livro['autor'])) {
                         return false;
                     }
                 }

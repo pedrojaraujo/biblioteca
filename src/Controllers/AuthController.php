@@ -10,63 +10,71 @@ use PDO;
 class AuthController
 {
     private $secretKey;
+    private $smarty;
 
     public function __construct()
     {
+        $this->smarty = getSmarty();
         $this->secretKey = $_ENV['JWT_SECRET_KEY'];
         if (!$this->secretKey) {
             throw new \Exception('Chave secreta JWT não definida. Verifique o arquivo .env.');
         }
     }
 
+    public function showLoginPage()
+    {
+        $this->smarty->display('auth/login.tpl');
+    }
+
     public function login()
     {
-        header('Content-Type: application/json'); // Define o cabeçalho padrão como JSON
+        $email = $_POST['email'] ?? null;
+        $senha = $_POST['senha'] ?? null;
 
-        $data = json_decode(file_get_contents('php://input'), true);
-        $username = $data['user'] ?? null;
-        $password = $data['pass'] ?? null;
+        var_dump($_POST);
 
-        if (!$username || !$password) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Credenciais incompletas']);
+
+        if (!$email || !$senha) {
+            $this->smarty->assign('error', 'Credenciais incompletas');
+            $this->showLoginPage();
             return;
         }
 
         $db = new Database();
         $pdo = $db->getPdo();
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
-        $stmt->execute(['username' => $username, 'password' => $password]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user) {
+        if ($usuario && password_verify($senha, $usuario['senha'])) {
             $payload = [
                 'iss' => 'http://localhost:8000',
                 'aud' => 'http://localhost:8000',
                 'iat' => time(),
                 'exp' => time() + (60 * 60),
-                'user' => $username,
-                'role' => $user['role']
+                'user' => $email,
+                'role' => $usuario['tipo_usuario'] // Corrigido para 'tipo_usuario'
             ];
 
             $jwt = JWT::encode($payload, $this->secretKey, 'HS256');
-            echo json_encode(['login' => 'Sucesso!', 'token' => $jwt]);
+            // Redirecionar ou exibir sucesso
+            $this->smarty->assign('login', 'Login bem-sucedido!');
+            $this->smarty->assign('token', $jwt);
+            $this->smarty->display('livros/lista.html');
+            exit;
         } else {
-            http_response_code(401);
-            echo json_encode(['error' => 'Credenciais inválidas']);
+            $this->smarty->assign('error', 'Credenciais inválidas');
+            $this->showLoginPage();
         }
     }
 
-
     public function validateToken()
     {
-        $headers = getallheaders();
-        $authHeader = $headers['Authorization'] ?? '';
+        $authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
         [$bearer, $token] = explode(' ', $authHeader) + [null, null];
 
         if ($bearer !== 'Bearer' || empty($token)) {
-            http_response_code(401);
-            echo json_encode(['error' => 'Token inválido ou ausente']);
+            $this->setError('Token inválido ou ausente');
             return false;
         }
 
@@ -74,9 +82,14 @@ class AuthController
             $decoded = JWT::decode($token, new Key($this->secretKey, 'HS256'));
             return $decoded;
         } catch (\Exception $e) {
-            http_response_code(401);
-            echo json_encode(['error' => 'Falha ao validar token']);
+            $this->setError('Falha ao validar token: ' . $e->getMessage());
             return false;
         }
+    }
+
+    private function setError($message)
+    {
+        $this->smarty->assign('error', $message);
+        $this->smarty->display('error.tpl');
     }
 }

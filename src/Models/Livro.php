@@ -5,7 +5,7 @@ namespace Biblioteca\Models;
 use Biblioteca\Database;
 use PDO;
 
-class Book
+class Livro
 {
     private $pdo;
 

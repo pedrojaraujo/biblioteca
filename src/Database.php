@@ -11,7 +11,7 @@ class Database
 
     public function __construct()
     {
-        $config = require __DIR__ . '/config/config.php';
+        $config = require __DIR__ . '/config/database.php';
         $db = $config['db'];
 
         try {

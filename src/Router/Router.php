@@ -19,9 +19,13 @@ class Router
         if (isset($this->routes[$method][$uri])) {
             call_user_func($this->routes[$method][$uri]);
         } else {
-            echo "404 - Página não encontrada\n";
-            echo "Available routes:\n";
-            print_r($this->routes);
+            $this->show404();
         }
+    }
+
+    private function show404()
+    {
+        $smarty = getSmarty();
+        $smarty->display('errors/404.tpl');
     }
 }

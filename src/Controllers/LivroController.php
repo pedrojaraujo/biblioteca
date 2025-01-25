@@ -49,8 +49,11 @@ class LivroController
             header('Location: /login');
             exit;
         }
-
+        $decoded = $this->auth->validateToken();
+        $tipo_usuario = $decoded->role;
+        
         $livros = $this->livroModel->getAllBooks();
+        $this->smarty->assign('tipo_usuario', $tipo_usuario);
         $this->smarty->assign('livros', $livros);
         $this->smarty->display('livros/lista.tpl');
     }

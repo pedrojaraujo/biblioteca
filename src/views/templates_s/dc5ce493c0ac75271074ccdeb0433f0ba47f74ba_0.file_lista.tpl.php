@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-25 22:05:54
+/* Smarty version 5.4.3, created on 2025-01-25 22:59:40
   from 'file:livros/lista.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_6795604214ce88_78855800',
+  'unifunc' => 'content_67956cdcd71cf5_95421187',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc5ce493c0ac75271074ccdeb0433f0ba47f74ba' => 
     array (
       0 => 'livros/lista.tpl',
-      1 => 1737842742,
+      1 => 1737845979,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,17 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6795604214ce88_78855800 (\Smarty\Template $_smarty_tpl) {
+function content_67956cdcd71cf5_95421187 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros';
-?><!-- filepath: /home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros/lista.tpl -->
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Livros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+          rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -47,9 +48,10 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
             <th>Ano de Publicação</th>
             <th>Gênero</th>
             <th>Estoque</th>
+            <th>Ações</th>
         </tr>
         </thead>
-        <tbody>
+  <tbody>
         <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('livros'), 'livro');
 $foreach0DoElse = true;
@@ -71,6 +73,19 @@ $foreach0DoElse = false;
 </td>
                 <td><?php echo $_smarty_tpl->getValue('livro')['estoque'];?>
 </td>
+                <td>
+                      <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'administrador') {?>
+                        <a href="/edit-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-warning btn-sm mb-1"><i title="Editar" class="bi bi-pencil-fill"></i></a>
+                        <a href="/delete-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-danger btn-sm mb-1"><i title="Excluir" class="bi bi-trash-fill"></i></a>
+                    <?php } else { ?>
+                        <a href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-primary btn-sm mb-1"><i title="Reservar" class="bi bi-plus-circle-fill"></i></i></a>
+                        <a href="/view-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-info btn-sm mb-1"><i title="Ver mais" class="bi bi-search"></i></a>
+                    <?php }?>
+                </td>
             </tr>
         <?php
 }
@@ -80,19 +95,6 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 </div>
 <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- defer>
-    function checkLogin() {
-        const token = localStorage.getItem('jwt_token');
-        if (!token) {
-            window.location.href = '/';
-        }
-    }
-
-    // Chame `checkLogin()` em páginas protegidas
-    checkLogin();
-<?php echo '</script'; ?>
 >
 </body>
 </html><?php }

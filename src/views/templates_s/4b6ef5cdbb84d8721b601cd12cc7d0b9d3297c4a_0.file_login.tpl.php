@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-25 21:12:56
+/* Smarty version 5.4.3, created on 2025-01-25 22:28:55
   from 'file:auth/login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_679553d8b2f969_52710680',
+  'unifunc' => 'content_679565a72e2c71_87174457',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4b6ef5cdbb84d8721b601cd12cc7d0b9d3297c4a' => 
     array (
       0 => 'auth/login.tpl',
-      1 => 1737838938,
+      1 => 1737844122,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_679553d8b2f969_52710680 (\Smarty\Template $_smarty_tpl) {
+function content_679565a72e2c71_87174457 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/auth';
 ?><!DOCTYPE html>
 <html lang="pt-br">
@@ -112,8 +112,8 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
 
                 </div>
             <?php }?>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">
+            <div id="loginButton" class="d-flex justify-content-center">
+                <button  type="submit" class="btn btn-primary">
                     Entrar
                 </button>
             </div>
@@ -129,7 +129,7 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
 
-    <?php echo '<script'; ?>
+<?php echo '<script'; ?>
  defer>
         document.querySelector('form').addEventListener('submit', async function (event) {
             event.preventDefault(); // Evita o envio do formulário
@@ -138,14 +138,13 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
             const email = formData.get('email');
             const senha = formData.get('senha');
 
-            const response = await fetch('/login', {
+         const response = await fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({email: email, senha: senha})
             });
-
 
             try {
                 const data = await response.json();
@@ -159,18 +158,18 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
                     if (!errorDiv) {
                         errorDiv = document.createElement('div');
                         errorDiv.className = 'p-1 alert alert-danger text-center';
-                        document.querySelector('.login-form').prepend(errorDiv);
+                        document.querySelector('#loginButton').insertAdjacentElement('beforebegin', errorDiv);
                     }
                     errorDiv.textContent = data.error || 'Erro ao fazer login';
                     errorDiv.style.display = 'block';
                 }
             } catch (error) {
-                console.error('Erro ao processar a resposta:', await response.text());
+                console.error('Erro ao processar a resposta:', error);
                 let errorDiv = document.querySelector('.alert-danger');
                 if (!errorDiv) {
                     errorDiv = document.createElement('div');
                     errorDiv.className = 'p-1 alert alert-danger text-center';
-                    document.querySelector('.login-form').prepend(errorDiv);
+                    document.querySelector('#loginButton').insertAdjacentElement('beforebegin', errorDiv);
                 }
                 errorDiv.textContent = 'Erro ao fazer login';
                 errorDiv.style.display = 'block';

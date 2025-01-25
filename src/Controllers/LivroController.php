@@ -24,12 +24,21 @@ class LivroController
      */
     private function requireAuth()
     {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['jwt_token'])) {
+            http_response_code(401);
+            header('Location: /login');
+            exit;
+        }
+
         $decoded = $this->auth->validateToken();
         if (!$decoded) {
             http_response_code(401);
-            $this->smarty->assign('error', 'Login não está ativo');
-            $this->smarty->display('error.tpl');
-            return false;
+            header('Location: /login');
+            exit;
         }
         return true;
     }
@@ -37,7 +46,8 @@ class LivroController
     public function index()
     {
         if (!$this->requireAuth()) {
-            return;
+            header('Location: /login');
+            exit;
         }
 
         $livros = $this->livroModel->getAllBooks();

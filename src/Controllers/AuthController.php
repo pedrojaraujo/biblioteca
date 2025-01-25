@@ -28,15 +28,20 @@ class AuthController
 
     public function login()
     {
-        $email = $_POST['email'] ?? null;
-        $senha = $_POST['senha'] ?? null;
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
-        var_dump($_POST);
+        // Obter o corpo da requisição JSON
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
 
+        $email = $data['email'] ?? null;
+        $senha = $data['senha'] ?? null;
 
         if (!$email || !$senha) {
-            $this->smarty->assign('error', 'Credenciais incompletas');
-            $this->showLoginPage();
+            http_response_code(400);
+            echo json_encode(['error' => 'Credenciais incompletas']);
             return;
         }
 
@@ -53,37 +58,58 @@ class AuthController
                 'iat' => time(),
                 'exp' => time() + (60 * 60),
                 'user' => $email,
-                'role' => $usuario['tipo_usuario'] // Corrigido para 'tipo_usuario'
+                'role' => $usuario['tipo_usuario']
             ];
 
             $jwt = JWT::encode($payload, $this->secretKey, 'HS256');
-            // Redirecionar ou exibir sucesso
-            $this->smarty->assign('login', 'Login bem-sucedido!');
-            $this->smarty->assign('token', $jwt);
-            $this->smarty->display('livros/lista.html');
-            exit;
+
+            // Armazenar o token na sessão
+            $_SESSION['jwt_token'] = $jwt;
+            error_log('JWT Token: ' . $_SESSION['jwt_token']);
+
+            http_response_code(200);
+            echo json_encode(['token' => $jwt]);
         } else {
-            $this->smarty->assign('error', 'Credenciais inválidas');
-            $this->showLoginPage();
+            http_response_code(401);
+            echo json_encode(['error' => 'Credenciais inválidas']);
         }
+    }
+
+    public function logout()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Destruir a sessão
+        session_destroy();
+
+        // Redirecionar para a página de login
+        $this->smarty->display('auth/login.tpl');
+        exit;
     }
 
     public function validateToken()
     {
-        $authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
-        [$bearer, $token] = explode(' ', $authHeader) + [null, null];
-
-        if ($bearer !== 'Bearer' || empty($token)) {
-            $this->setError('Token inválido ou ausente');
-            return false;
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
+
+        if (!isset($_SESSION['jwt_token'])) {
+            http_response_code(401);
+            echo json_encode(['error' => 'Token inválido ou ausente']);
+            exit;
+        }
+
+        $token = $_SESSION['jwt_token'];
 
         try {
             $decoded = JWT::decode($token, new Key($this->secretKey, 'HS256'));
             return $decoded;
         } catch (\Exception $e) {
-            $this->setError('Falha ao validar token: ' . $e->getMessage());
-            return false;
+            http_response_code(401);
+            echo json_encode(['error' => 'Falha ao validar token: ' . $e->getMessage()]);
+            exit;
         }
     }
 

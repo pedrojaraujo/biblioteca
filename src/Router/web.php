@@ -8,6 +8,7 @@ $router = new Router();
 
 $router->add('/', [new AuthController(), 'showLoginPage']);
 $router->add('/login', [new AuthController(), 'login'], 'POST');
+$router->add('/logout', [new AuthController(), 'logout']);
 $router->add('/livros', [new LivroController(), 'index']);
 $router->add('/add-livro', [new LivroController(), 'addBook'], 'POST');
 $router->add('/update-livro', [new LivroController(), 'updateBook'], 'PUT');

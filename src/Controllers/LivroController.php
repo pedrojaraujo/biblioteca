@@ -96,17 +96,16 @@ class LivroController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = $_POST;
             if (!$this->validateBookData($data)) {
-                echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
+                $this->jsonResponse(['success' => false, 'message' => 'Dados inválidos']);
                 return;
             }
             $this->livroModel->addBook(
                 $data['titulo'], $data['autor'], $data['editora'], $data['ano_publicacao'],
                 $data['genero'], $data['sinopse'], $data['imagem'], $data['estoque'], $data['palavras_chave']
             );
-            echo json_encode(['success' => true, 'message' => 'Livro criado com sucesso!']);
+            $this->jsonResponse(['success' => true, 'message' => 'Livro criado com sucesso!']);
         }
     }
-
     public function editBook($id)
     {
         if (!$this->requireAuth()) {

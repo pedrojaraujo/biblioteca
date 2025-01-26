@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-26 02:40:55
+/* Smarty version 5.4.3, created on 2025-01-26 16:46:37
   from 'file:livros/lista.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_6795a0b7b91fa5_68264968',
+  'unifunc' => 'content_679666edb52189_57319476',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc5ce493c0ac75271074ccdeb0433f0ba47f74ba' => 
     array (
       0 => 'livros/lista.tpl',
-      1 => 1737859253,
+      1 => 1737909965,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6795a0b7b91fa5_68264968 (\Smarty\Template $_smarty_tpl) {
+function content_679666edb52189_57319476 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros';
 ?><!DOCTYPE html>
 <html lang="pt-br">
@@ -97,7 +97,7 @@ $foreach0DoElse = false;
                                     <i title="Excluir" class="bi bi-trash-fill"></i>
                                 </a>
                             <?php } else { ?>
-                                <a href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+                                <a id="buttonBorrow" href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 ?id_usuario=<?php echo $_smarty_tpl->getValue('id_usuario');?>
 "
                                    class="btn btn-primary btn-sm mb-1">
@@ -163,7 +163,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                             <label for="palavras_chave" class="form-label">Palavras-chave</label>
                             <textarea class="form-control" id="palavras_chave" name="palavras_chave"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button id="createBookButton" type="submit" class="btn btn-primary">Salvar</button>
                     </form>
                 </div>
             </div>
@@ -221,7 +221,12 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                 fetch('/create-livro', {
                     method: 'POST',
                     body: formData
-                }).then(response => response.json()).then(data => {
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                }).then(data => {
                     if (data.success) {
                         location.reload();
                     } else {
@@ -232,75 +237,73 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     alert('Erro ao criar livro');
                 });
             });
-        });
 
-        // Handle delete book button click
-        document.querySelectorAll('.btn-delete-book').forEach(button => {
-            button.addEventListener('click', function () {
-                document.getElementById('deleteBookId').value = this.dataset.bookId;
-                const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
-                deleteBookModal.show();
+            // Handle delete book button click
+            document.querySelectorAll('.btn-delete-book').forEach(button => {
+                button.addEventListener('click', function () {
+                    document.getElementById('deleteBookId').value = this.dataset.bookId;
+                    const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
+                    deleteBookModal.show();
+                });
             });
-        });
 
-        // Handle delete book form submission
-        document.getElementById('deleteBookForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const bookId = document.getElementById('deleteBookId').value;
-            fetch('/delete-livro', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({id_livro: bookId})
-            }).then(response => response.json()).then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    alert('Erro ao excluir livro: ' + data.message);
-                }
-            });
-        });
-
-        // Handle add to cart button click
-        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
-            button.addEventListener('click', function () {
-                const bookId = this.dataset.bookId;
-                const bookTitle = this.dataset.bookTitle;
-                const bookAuthor = this.dataset.bookAuthor;
-
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                cart.push({id: bookId, titulo: bookTitle, autor: bookAuthor});
-                localStorage.setItem('cart', JSON.stringify(cart));
-
-                alert('Livro adicionado ao carrinho!');
-            });
-        });
-
-        // Handle borrow book button click
-        document.querySelectorAll('.btn-primary').forEach(button => {
-            button.addEventListener('click', function (event) {
+            // Handle delete book form submission
+            document.getElementById('deleteBookForm').addEventListener('submit', function (event) {
                 event.preventDefault();
-                const idLivro = this.dataset.bookId;
-                const idUsuario = this.dataset.idUsuario;
-
-                fetch(`/borrow-livro/${idLivro}?id_usuario=${idUsuario}`, {
+                const bookId = document.getElementById('deleteBookId').value;
+                fetch('/delete-livro', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify({id_livro: bookId})
                 }).then(response => response.json()).then(data => {
                     if (data.success) {
-                        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                        successModal.show();
+                        location.reload();
                     } else {
-                        alert('Erro ao reservar livro: ' + data.message);
+                        alert('Erro ao excluir livro: ' + data.message);
                     }
                 });
             });
+
+            // Handle add to cart button click
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    const bookId = this.dataset.bookId;
+                    const bookTitle = this.dataset.bookTitle;
+                    const bookAuthor = this.dataset.bookAuthor;
+
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart.push({id: bookId, titulo: bookTitle, autor: bookAuthor});
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    alert('Livro adicionado ao carrinho!');
+                });
+            });
+
+            // Handle borrow book button click
+            document.querySelectorAll('#buttonBorrow').forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const idLivro = this.dataset.bookId;
+                    const idUsuario = this.dataset.idUsuario;
+
+                    fetch(`/borrow-livro/${idLivro}?id_usuario=${idUsuario}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(response => response.json()).then(data => {
+                        if (data.success) {
+                            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                            successModal.show();
+                        } else {
+                            alert('Erro ao reservar livro: ' + data.message);
+                        }
+                    });
+                });
+            });
         });
-        })
-        ;
     <?php echo '</script'; ?>
 >
 

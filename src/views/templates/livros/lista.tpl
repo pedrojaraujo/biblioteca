@@ -59,7 +59,7 @@
                                     <i title="Excluir" class="bi bi-trash-fill"></i>
                                 </a>
                             {else}
-                                <a href="/borrow-livro/{$livro.id_livro}?id_usuario={$id_usuario}"
+                                <a id="buttonBorrow" href="/borrow-livro/{$livro.id_livro}?id_usuario={$id_usuario}"
                                    class="btn btn-primary btn-sm mb-1">
                                     <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                 </a>
@@ -120,7 +120,7 @@
                             <label for="palavras_chave" class="form-label">Palavras-chave</label>
                             <textarea class="form-control" id="palavras_chave" name="palavras_chave"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button id="createBookButton" type="submit" class="btn btn-primary">Salvar</button>
                     </form>
                 </div>
             </div>
@@ -175,7 +175,12 @@
                 fetch('/create-livro', {
                     method: 'POST',
                     body: formData
-                }).then(response => response.json()).then(data => {
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                }).then(data => {
                     if (data.success) {
                         location.reload();
                     } else {
@@ -186,75 +191,73 @@
                     alert('Erro ao criar livro');
                 });
             });
-        });
 
-        // Handle delete book button click
-        document.querySelectorAll('.btn-delete-book').forEach(button => {
-            button.addEventListener('click', function () {
-                document.getElementById('deleteBookId').value = this.dataset.bookId;
-                const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
-                deleteBookModal.show();
+            // Handle delete book button click
+            document.querySelectorAll('.btn-delete-book').forEach(button => {
+                button.addEventListener('click', function () {
+                    document.getElementById('deleteBookId').value = this.dataset.bookId;
+                    const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
+                    deleteBookModal.show();
+                });
             });
-        });
 
-        // Handle delete book form submission
-        document.getElementById('deleteBookForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const bookId = document.getElementById('deleteBookId').value;
-            fetch('/delete-livro', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({id_livro: bookId})
-            }).then(response => response.json()).then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    alert('Erro ao excluir livro: ' + data.message);
-                }
-            });
-        });
-
-        // Handle add to cart button click
-        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
-            button.addEventListener('click', function () {
-                const bookId = this.dataset.bookId;
-                const bookTitle = this.dataset.bookTitle;
-                const bookAuthor = this.dataset.bookAuthor;
-
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                cart.push({id: bookId, titulo: bookTitle, autor: bookAuthor});
-                localStorage.setItem('cart', JSON.stringify(cart));
-
-                alert('Livro adicionado ao carrinho!');
-            });
-        });
-
-        // Handle borrow book button click
-        document.querySelectorAll('.btn-primary').forEach(button => {
-            button.addEventListener('click', function (event) {
+            // Handle delete book form submission
+            document.getElementById('deleteBookForm').addEventListener('submit', function (event) {
                 event.preventDefault();
-                const idLivro = this.dataset.bookId;
-                const idUsuario = this.dataset.idUsuario;
-
-                fetch(`/borrow-livro/${idLivro}?id_usuario=${idUsuario}`, {
+                const bookId = document.getElementById('deleteBookId').value;
+                fetch('/delete-livro', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify({id_livro: bookId})
                 }).then(response => response.json()).then(data => {
                     if (data.success) {
-                        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                        successModal.show();
+                        location.reload();
                     } else {
-                        alert('Erro ao reservar livro: ' + data.message);
+                        alert('Erro ao excluir livro: ' + data.message);
                     }
                 });
             });
+
+            // Handle add to cart button click
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    const bookId = this.dataset.bookId;
+                    const bookTitle = this.dataset.bookTitle;
+                    const bookAuthor = this.dataset.bookAuthor;
+
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart.push({id: bookId, titulo: bookTitle, autor: bookAuthor});
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    alert('Livro adicionado ao carrinho!');
+                });
+            });
+
+            // Handle borrow book button click
+            document.querySelectorAll('#buttonBorrow').forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const idLivro = this.dataset.bookId;
+                    const idUsuario = this.dataset.idUsuario;
+
+                    fetch(`/borrow-livro/${idLivro}?id_usuario=${idUsuario}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(response => response.json()).then(data => {
+                        if (data.success) {
+                            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                            successModal.show();
+                        } else {
+                            alert('Erro ao reservar livro: ' + data.message);
+                        }
+                    });
+                });
+            });
         });
-        })
-        ;
     </script>
 {/literal}
 </body>

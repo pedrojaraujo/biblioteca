@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
           rel="stylesheet">
 </head>
+
 <body>
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -59,11 +61,9 @@
                                     <i title="Excluir" class="bi bi-trash-fill"></i>
                                 </a>
                             {else}
-                                <a
-                                        href="/borrow-livro/{$livro.id_livro}?id_usuario={$id_usuario}"
-                                        class="buttonBorrow btn btn-primary btn-sm mb-1"
-                                        data-book-id="{$livro.id_livro}"
-                                        data-id-usuario="{$id_usuario}">
+                                <a href="/borrow-livro/{$livro.id_livro}?id_usuario={$id_usuario}"
+                                   class="buttonBorrow btn btn-primary btn-sm mb-1" data-book-id="{$livro.id_livro}"
+                                   data-id-usuario="{$id_usuario}">
                                     <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                 </a>
                                 <a href="/view-livro/{$livro.id_livro}" class="btn btn-info btn-sm mb-1">
@@ -117,7 +117,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="estoque" class="form-label">Estoque</label>
-                            <input type="number" class="form-control" id="estoque" name="estoque" value="1" required>
+                            <input type="number" class="form-control" id="estoque" name="estoque" value="1"
+                                   required>
                         </div>
                         <div class="mb-3">
                             <label for="palavras_chave" class="form-label">Palavras-chave</label>
@@ -142,7 +143,9 @@
                     <form id="deleteBookForm">
                         <input type="hidden" id="deleteBookId" name="id_livro">
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Não</button>
+                            <button type="button" class="btn btn-secondary me-2"
+                                    data-bs-dismiss="modal">Não
+                            </button>
                             <button type="submit" class="btn btn-danger">Sim</button>
                         </div>
                     </form>
@@ -161,7 +164,8 @@
                     Reservas confirmadas com sucesso!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                    <button id="confirmBorrow" type="button" class="btn btn-success" data-bs-dismiss="modal">Ok!
+                    </button>
                 </div>
             </div>
         </div>
@@ -199,7 +203,8 @@
             document.querySelectorAll('.btn-delete-book').forEach(button => {
                 button.addEventListener('click', function () {
                     document.getElementById('deleteBookId').value = this.dataset.bookId;
-                    const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
+                    const deleteBookModal = new bootstrap.Modal(document.getElementById(
+                        'deleteBookModal'));
                     deleteBookModal.show();
                 });
             });
@@ -290,4 +295,5 @@
     </script>
 {/literal}
 </body>
+
 </html>

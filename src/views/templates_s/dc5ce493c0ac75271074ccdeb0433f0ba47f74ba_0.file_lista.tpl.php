@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-26 18:07:51
+/* Smarty version 5.4.3, created on 2025-01-26 18:32:03
   from 'file:livros/lista.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_679679f74226a3_31681566',
+  'unifunc' => 'content_67967fa3536a29_92079909',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc5ce493c0ac75271074ccdeb0433f0ba47f74ba' => 
     array (
       0 => 'livros/lista.tpl',
-      1 => 1737914871,
+      1 => 1737916321,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_679679f74226a3_31681566 (\Smarty\Template $_smarty_tpl) {
+function content_67967fa3536a29_92079909 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros';
 ?><!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +33,7 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
           rel="stylesheet">
 </head>
+
 <body>
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -97,14 +99,12 @@ $foreach0DoElse = false;
                                     <i title="Excluir" class="bi bi-trash-fill"></i>
                                 </a>
                             <?php } else { ?>
-                                <a
-                                        href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+                                <a href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 ?id_usuario=<?php echo $_smarty_tpl->getValue('id_usuario');?>
 "
-                                        class="buttonBorrow btn btn-primary btn-sm mb-1"
-                                        data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+                                   class="buttonBorrow btn btn-primary btn-sm mb-1" data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 "
-                                        data-id-usuario="<?php echo $_smarty_tpl->getValue('id_usuario');?>
+                                   data-id-usuario="<?php echo $_smarty_tpl->getValue('id_usuario');?>
 ">
                                     <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                 </a>
@@ -162,7 +162,8 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         </div>
                         <div class="mb-3">
                             <label for="estoque" class="form-label">Estoque</label>
-                            <input type="number" class="form-control" id="estoque" name="estoque" value="1" required>
+                            <input type="number" class="form-control" id="estoque" name="estoque" value="1"
+                                   required>
                         </div>
                         <div class="mb-3">
                             <label for="palavras_chave" class="form-label">Palavras-chave</label>
@@ -187,7 +188,9 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     <form id="deleteBookForm">
                         <input type="hidden" id="deleteBookId" name="id_livro">
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Não</button>
+                            <button type="button" class="btn btn-secondary me-2"
+                                    data-bs-dismiss="modal">Não
+                            </button>
                             <button type="submit" class="btn btn-danger">Sim</button>
                         </div>
                     </form>
@@ -195,18 +198,18 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </div>
         </div>
     </div>
-    <div id="borrowModal" class="modal fade" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div id="borrowModal" class="modal fade" tabindex="-1" aria-labelledby="borrowModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Sucesso</h5>
+                    <h5 class="modal-title" id="borrowModalLabel">Status da Reserva</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Reservas confirmadas com sucesso!
+                    <!-- Status message will be inserted here -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
@@ -247,7 +250,8 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             document.querySelectorAll('.btn-delete-book').forEach(button => {
                 button.addEventListener('click', function () {
                     document.getElementById('deleteBookId').value = this.dataset.bookId;
-                    const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
+                    const deleteBookModal = new bootstrap.Modal(document.getElementById(
+                        'deleteBookModal'));
                     deleteBookModal.show();
                 });
             });
@@ -320,17 +324,21 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                             return response.json();
                         })
                         .then(data => {
+                            const modalBody = document.querySelector('#borrowModal .modal-body');
                             if (data.success) {
-                                alert('Livro reservado com sucesso!');
+                                modalBody.textContent = 'Livro reservado com sucesso!';
                             } else {
-                                alert('Erro ao reservar o livro.');
+                                modalBody.textContent = 'Erro ao reservar o livro.';
                             }
                             const borrowModal = bootstrap.Modal.getInstance(document.getElementById('borrowModal'));
-                            borrowModal.hide();
+                            borrowModal.show();
                         })
                         .catch(error => {
                             console.error('Erro:', error);
-                            alert('Ocorreu um erro ao processar a requisição.');
+                            const modalBody = document.querySelector('#borrowModal .modal-body');
+                            modalBody.textContent = 'Ocorreu um erro ao processar a requisição.';
+                            const borrowModal = bootstrap.Modal.getInstance(document.getElementById('borrowModal'));
+                            borrowModal.show();
                         });
                 });
             }
@@ -339,5 +347,6 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 >
 
 </body>
+
 </html><?php }
 }

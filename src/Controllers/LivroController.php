@@ -98,6 +98,12 @@ class LivroController
         exit;
     }
 
+    private function redirect(string $url)
+    {
+        header('Location: ' . $url);
+        exit;
+    }
+
     private
     function extracted($data, $isDelete): bool
     {
@@ -142,6 +148,23 @@ class LivroController
         $this->smarty->assign('livros', $livros);
         $this->smarty->assign('id_usuario', $id_usuario);
         $this->smarty->display('livros/lista.tpl');
+    }
+
+    public function viewBook($id)
+    {
+        if (!$this->requireAuth()) {
+            header('Location: /login');
+            exit;
+        }
+
+        $livro = $this->livroModel->getBookById($id);
+        if (!$livro) {
+            $this->redirect('/livros');
+            return;
+        }
+
+        $this->smarty->assign('livro', $livro);
+        $this->smarty->display('livros/view.tpl');
     }
 
     public function createBook()
@@ -311,6 +334,5 @@ class LivroController
             $this->jsonResponse(['success' => false, 'message' => 'ID da reserva não fornecido']);
         }
     }
-
 
 }

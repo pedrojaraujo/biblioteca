@@ -19,6 +19,7 @@ $router->add('/confirmar-reservas', [new LivroController(), 'confirmReservations
 $router->add('/borrow-livro/[i:id]', [new LivroController(), 'borrowLivro'], 'POST');
 $router->add('/get-user-reservations', [new LivroController(), 'getUserReservations'], 'GET');
 $router->add('/delete-reservation', [new LivroController(), 'deleteReservation'], 'POST');
+$router->add('/view-livro/[i:id]', [new LivroController(), 'viewBook'], 'GET');
 
 $uri = $_SERVER['PATH_INFO'] ?? '/';
 $method = $_SERVER['REQUEST_METHOD'];

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-26 18:48:50
+/* Smarty version 5.4.3, created on 2025-01-26 20:13:32
   from 'file:livros/lista.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_6796839245ad27_80019579',
+  'unifunc' => 'content_6796976c185349_24632140',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc5ce493c0ac75271074ccdeb0433f0ba47f74ba' => 
     array (
       0 => 'livros/lista.tpl',
-      1 => 1737917328,
+      1 => 1737921878,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6796839245ad27_80019579 (\Smarty\Template $_smarty_tpl) {
+function content_6796976c185349_24632140 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros';
 ?><!DOCTYPE html>
 <html lang="pt-br">
@@ -110,7 +110,7 @@ $foreach0DoElse = false;
                                 </a>
                                 <a href="/view-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 " class="btn btn-info btn-sm mb-1">
-                                    <i title="Ver mais" class="bi bi-search"></i>
+                                    <i title="Ver mais" class="verMais bi bi-search"></i>
                                 </a>
                             <?php }?>
                         </td>

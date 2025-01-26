@@ -67,7 +67,7 @@
                                     <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                 </a>
                                 <a href="/view-livro/{$livro.id_livro}" class="btn btn-info btn-sm mb-1">
-                                    <i title="Ver mais" class="bi bi-search"></i>
+                                    <i title="Ver mais" class="verMais bi bi-search"></i>
                                 </a>
                             {/if}
                         </td>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-26 18:32:03
+/* Smarty version 5.4.3, created on 2025-01-26 18:48:50
   from 'file:livros/lista.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_67967fa3536a29_92079909',
+  'unifunc' => 'content_6796839245ad27_80019579',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc5ce493c0ac75271074ccdeb0433f0ba47f74ba' => 
     array (
       0 => 'livros/lista.tpl',
-      1 => 1737916321,
+      1 => 1737917328,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,10 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_67967fa3536a29_92079909 (\Smarty\Template $_smarty_tpl) {
+function content_6796839245ad27_80019579 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros';
 ?><!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +32,6 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
           rel="stylesheet">
 </head>
-
 <body>
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -99,12 +97,14 @@ $foreach0DoElse = false;
                                     <i title="Excluir" class="bi bi-trash-fill"></i>
                                 </a>
                             <?php } else { ?>
-                                <a href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+                                <a
+                                        href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 ?id_usuario=<?php echo $_smarty_tpl->getValue('id_usuario');?>
 "
-                                   class="buttonBorrow btn btn-primary btn-sm mb-1" data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+                                        class="buttonBorrow btn btn-primary btn-sm mb-1"
+                                        data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 "
-                                   data-id-usuario="<?php echo $_smarty_tpl->getValue('id_usuario');?>
+                                        data-id-usuario="<?php echo $_smarty_tpl->getValue('id_usuario');?>
 ">
                                     <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                 </a>
@@ -162,8 +162,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         </div>
                         <div class="mb-3">
                             <label for="estoque" class="form-label">Estoque</label>
-                            <input type="number" class="form-control" id="estoque" name="estoque" value="1"
-                                   required>
+                            <input type="number" class="form-control" id="estoque" name="estoque" value="1" required>
                         </div>
                         <div class="mb-3">
                             <label for="palavras_chave" class="form-label">Palavras-chave</label>
@@ -188,9 +187,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     <form id="deleteBookForm">
                         <input type="hidden" id="deleteBookId" name="id_livro">
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-secondary me-2"
-                                    data-bs-dismiss="modal">Não
-                            </button>
+                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Não</button>
                             <button type="submit" class="btn btn-danger">Sim</button>
                         </div>
                     </form>
@@ -250,8 +247,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             document.querySelectorAll('.btn-delete-book').forEach(button => {
                 button.addEventListener('click', function () {
                     document.getElementById('deleteBookId').value = this.dataset.bookId;
-                    const deleteBookModal = new bootstrap.Modal(document.getElementById(
-                        'deleteBookModal'));
+                    const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
                     deleteBookModal.show();
                 });
             });
@@ -301,45 +297,39 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         event.preventDefault();
                         currentBookId = this.getAttribute('data-book-id');
                         currentUserId = this.getAttribute('data-id-usuario');
-                        const borrowModal = new bootstrap.Modal(document.getElementById('borrowModal'));
-                        borrowModal.show();
+                        fetch(`/borrow-livro/${currentBookId}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({id_usuario: currentUserId})
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                const modalBody = document.querySelector('#borrowModal .modal-body');
+                                if (data.success) {
+                                    modalBody.textContent = 'Livro reservado com sucesso!';
+                                } else {
+                                    modalBody.textContent = 'Erro ao reservar o livro.';
+                                }
+                                const borrowModalElement = document.getElementById('borrowModal');
+                                const borrowModal = new bootstrap.Modal(borrowModalElement);
+                                borrowModal.show();
+                            })
+                            .catch(error => {
+                                console.error('Erro:', error);
+                                const modalBody = document.querySelector('#borrowModal .modal-body');
+                                modalBody.textContent = 'Ocorreu um erro ao processar a requisição.';
+                                const borrowModalElement = document.getElementById('borrowModal');
+                                const borrowModal = new bootstrap.Modal(borrowModalElement);
+                                borrowModal.show();
+                            });
                     });
-                });
-            }
-
-            const confirmBorrowButton = document.getElementById('confirmBorrow');
-            if (confirmBorrowButton) {
-                confirmBorrowButton.addEventListener('click', function () {
-                    fetch(`/borrow-livro/${currentBookId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({id_usuario: currentUserId})
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            const modalBody = document.querySelector('#borrowModal .modal-body');
-                            if (data.success) {
-                                modalBody.textContent = 'Livro reservado com sucesso!';
-                            } else {
-                                modalBody.textContent = 'Erro ao reservar o livro.';
-                            }
-                            const borrowModal = bootstrap.Modal.getInstance(document.getElementById('borrowModal'));
-                            borrowModal.show();
-                        })
-                        .catch(error => {
-                            console.error('Erro:', error);
-                            const modalBody = document.querySelector('#borrowModal .modal-body');
-                            modalBody.textContent = 'Ocorreu um erro ao processar a requisição.';
-                            const borrowModal = bootstrap.Modal.getInstance(document.getElementById('borrowModal'));
-                            borrowModal.show();
-                        });
                 });
             }
         });
@@ -347,6 +337,5 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 >
 
 </body>
-
 </html><?php }
 }

@@ -9,6 +9,7 @@ class Livro
 {
     private $pdo;
 
+
     public function __construct()
     {
         $this->pdo = (new Database())->getPdo();
@@ -89,9 +90,29 @@ class Livro
         ]);
     }
 
+    public function getReservationsByUserId($id_usuario)
+    {
+        $query = "SELECT e.id_emprestimo, l.titulo, l.autor, e.data_devolucao_prevista 
+              FROM emprestimos e
+              JOIN livros l ON e.id_livro = l.id_livro
+              WHERE e.id_usuario = :id_usuario";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id_usuario', $id_usuario);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function deleteBook($id)
     {
         $stmt = $this->pdo->prepare("DELETE FROM livros WHERE id_livro = :id_livro");
         $stmt->execute(['id_livro' => $id]);
+    }
+
+    public function deleteReservation($id)
+    {
+        $query = "DELETE FROM emprestimos WHERE id_emprestimo = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
     }
 }

@@ -44,6 +44,89 @@ class LivroController
         return true;
     }
 
+    private
+    function validateBookData($data, $isDelete = false): bool
+    {
+        if (is_array($data)) {
+            if (isset($data[0]) && is_array($data[0])) {
+                foreach ($data as $livro) {
+                    if ($isDelete) {
+                        if (empty($livro['id_livro'])) {
+                            return false;
+                        }
+                    } else {
+                        if (empty($livro['titulo']) || empty($livro['autor']) || empty($livro['editora']) ||
+                            empty($livro['genero']) || empty($livro['sinopse']) || empty($livro['imagem']) ||
+                            !isset($livro['estoque'])) {
+                            return false;
+                        }
+                    }
+                }
+            } else {
+                if ($isDelete) {
+                    if (empty($data['id_livro'])) {
+                        return false;
+                    }
+                } else {
+                    if (empty($data['titulo']) || empty($data['autor']) || empty($data['editora']) ||
+                        empty($data['genero']) || empty($data['sinopse']) || empty($data['imagem']) ||
+                        !isset($data['estoque'])) {
+                        return false;
+                    }
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+
+    private
+    function jsonResponse(array $data, int $statusCode = 200)
+    {
+        // Configurar o código de status HTTP
+        http_response_code($statusCode);
+
+        // Configurar o cabeçalho para JSON com charset UTF-8
+        header('Content-Type: application/json; charset=utf-8');
+
+        // Retornar o JSON formatado
+        echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+        // Finalizar a execução
+        exit;
+    }
+
+    private
+    function extracted($data, $isDelete): bool
+    {
+        if (is_array($data[0])) {
+            foreach ($data as $livro) {
+                if ($isDelete) {
+                    if (empty($livro['id'])) {
+                        return false;
+                    }
+                } else {
+                    if (empty($livro['titulo']) || empty($livro['autor'])) {
+                        return false;
+                    }
+                }
+            }
+        } else {
+            if ($isDelete) {
+                if (empty($data['id'])) {
+                    return false;
+                }
+            } else {
+                if (empty($data['titulo']) || empty($data['autor'])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public function index()
     {
         if (!$this->requireAuth()) {
@@ -59,38 +142,6 @@ class LivroController
         $this->smarty->assign('livros', $livros);
         $this->smarty->assign('id_usuario', $id_usuario);
         $this->smarty->display('livros/lista.tpl');
-    }
-
-    public function showCart()
-    {
-        if (!$this->requireAuth()) {
-            header('Location: /login');
-            exit;
-        }
-
-        $maxDate = (new DateTime('+30 days'))->format('Y-m-d');
-        $this->smarty->assign('maxDate', $maxDate);
-
-        $this->smarty->display('livros/carrinho.tpl');
-    }
-
-    public function confirmReservations()
-    {
-        if (!$this->requireAuth()) {
-            header('Location: /login');
-            exit;
-        }
-
-        $data = json_decode(file_get_contents('php://input'), true);
-        $decoded = $this->auth->validateToken();
-        $id_usuario = $decoded->id;
-
-        // Processar reservas
-        foreach ($data['reservas'] as $reserva) {
-            $this->livroModel->reserveBook($reserva['id'], $id_usuario, $reserva['data_reserva']);
-        }
-
-        $this->jsonResponse(['success' => true, 'message' => 'Reservas confirmadas com sucesso!']);
     }
 
     public function createBook()
@@ -198,86 +249,68 @@ class LivroController
         }
     }
 
-    private
-    function validateBookData($data, $isDelete = false): bool
+    public function confirmReservations()
     {
-        if (is_array($data)) {
-            if (isset($data[0]) && is_array($data[0])) {
-                foreach ($data as $livro) {
-                    if ($isDelete) {
-                        if (empty($livro['id_livro'])) {
-                            return false;
-                        }
-                    } else {
-                        if (empty($livro['titulo']) || empty($livro['autor']) || empty($livro['editora']) ||
-                            empty($livro['genero']) || empty($livro['sinopse']) || empty($livro['imagem']) ||
-                            !isset($livro['estoque'])) {
-                            return false;
-                        }
-                    }
-                }
-            } else {
-                if ($isDelete) {
-                    if (empty($data['id_livro'])) {
-                        return false;
-                    }
-                } else {
-                    if (empty($data['titulo']) || empty($data['autor']) || empty($data['editora']) ||
-                        empty($data['genero']) || empty($data['sinopse']) || empty($data['imagem']) ||
-                        !isset($data['estoque'])) {
-                        return false;
-                    }
-                }
-            }
-        } else {
-            return false;
+        if (!$this->requireAuth()) {
+            header('Location: /login');
+            exit;
         }
-        return true;
-    }
 
+        $data = json_decode(file_get_contents('php://input'), true);
+        $decoded = $this->auth->validateToken();
+        $id_usuario = $decoded->id;
 
-    private
-    function jsonResponse(array $data, int $statusCode = 200)
-    {
-        // Configurar o código de status HTTP
-        http_response_code($statusCode);
-
-        // Configurar o cabeçalho para JSON com charset UTF-8
-        header('Content-Type: application/json; charset=utf-8');
-
-        // Retornar o JSON formatado
-        echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-
-        // Finalizar a execução
-        exit;
-    }
-
-    private
-    function extracted($data, $isDelete): bool
-    {
-        if (is_array($data[0])) {
-            foreach ($data as $livro) {
-                if ($isDelete) {
-                    if (empty($livro['id'])) {
-                        return false;
-                    }
-                } else {
-                    if (empty($livro['titulo']) || empty($livro['autor'])) {
-                        return false;
-                    }
-                }
-            }
-        } else {
-            if ($isDelete) {
-                if (empty($data['id'])) {
-                    return false;
-                }
-            } else {
-                if (empty($data['titulo']) || empty($data['autor'])) {
-                    return false;
-                }
-            }
+        // Processar reservas
+        foreach ($data['reservas'] as $reserva) {
+            $this->livroModel->reserveBook($reserva['id'], $id_usuario, $reserva['data_reserva']);
         }
-        return true;
+
+        $this->jsonResponse(['success' => true, 'message' => 'Reservas confirmadas com sucesso!']);
     }
+
+    public function getUserReservations()
+    {
+        if (!$this->requireAuth()) {
+            header('Location: /login');
+            exit;
+        }
+
+        $decoded = $this->auth->validateToken();
+        $id_usuario = $decoded->id_usuario;
+
+        $reservas = $this->livroModel->getReservationsByUserId($id_usuario);
+        $this->jsonResponse(['success' => true, 'reservas' => $reservas]);
+    }
+
+    public function showCart()
+    {
+        if (!$this->requireAuth()) {
+            header('Location: /login');
+            exit;
+        }
+
+        $maxDate = (new DateTime('+30 days'))->format('Y-m-d');
+        $this->smarty->assign('maxDate', $maxDate);
+
+        $this->smarty->display('livros/carrinho.tpl');
+    }
+
+    public function deleteReservation()
+    {
+        if (!$this->requireAuth()) {
+            $this->jsonResponse(['success' => false, 'message' => 'Usuário não autenticado.'], 401);
+            return;
+        }
+
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if (isset($data['id'])) {
+            $this->livroModel->deleteReservation($data['id']);
+            $this->jsonResponse(['success' => true, 'message' => 'Reserva deletada com sucesso!']);
+        } else {
+            $this->jsonResponse(['success' => false, 'message' => 'ID da reserva não fornecido']);
+        }
+    }
+
+
 }

@@ -1,6 +1,6 @@
 # Aplicativo de Gerenciamento - Estudo de PHP e Desenvolvimento de API
 
-Este projeto foi desenvolvido como parte do estudo de **PHP** e criação de APIs RESTful. O objetivo principal é aprofundar o conhecimento em desenvolvimento de APIs utilizando PHP, manipulação de dados e integração com banco de dados.
+Este projeto foi desenvolvido como parte do estudo de **PHP** e criação de APIs RESTful. O objetivo principal é aprofundar o conhecimento em desenvolvimento de APIs utilizando PHP, manipulação de dados e integração com banco de dados. Este é um projeto **fullstack**, abrangendo tanto o backend quanto o frontend.
 
 ## **Propósito do Projeto**
 
@@ -22,6 +22,7 @@ O aplicativo visa fornecer funcionalidades básicas de gerenciamento de dados, c
 - **Dotenv:** Para carregar variáveis de ambiente de forma segura.
 - **Composer:** Gerenciador de dependências para PHP.
 - **.htaccess:** Configurações e segurança no ambiente de desenvolvimento.
+- **Smarty:** Template engine para separar a lógica da apresentação.
 
 ## **Funcionalidades**
 

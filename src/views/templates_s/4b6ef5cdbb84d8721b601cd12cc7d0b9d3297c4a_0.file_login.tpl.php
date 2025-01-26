@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-25 22:28:55
+/* Smarty version 5.4.3, created on 2025-01-26 00:51:14
   from 'file:auth/login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_679565a72e2c71_87174457',
+  'unifunc' => 'content_6795870212e1e2_73374020',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4b6ef5cdbb84d8721b601cd12cc7d0b9d3297c4a' => 
     array (
       0 => 'auth/login.tpl',
-      1 => 1737844122,
+      1 => 1737852671,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_679565a72e2c71_87174457 (\Smarty\Template $_smarty_tpl) {
+function content_6795870212e1e2_73374020 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/auth';
 ?><!DOCTYPE html>
 <html lang="pt-br">
@@ -92,7 +92,7 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
 <body>
 <main class="main-container">
     <section>
-        <h1 class="text-center py-3">Gerenciador de Biblioteca</h1>
+        <h1 class="text-center py-3">Library</h1>
     </section>
     <section class="login-form">
         <h1 class="text-center mb-4"><i class="bi bi-person-fill text-primary"></i></h1>

@@ -1,0 +1,77 @@
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+)
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+)
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+)
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+    [id_usuario] => 
+)
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+    [id_usuario] => 2
+)
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+    [id_usuario] => 2
+)
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+    [id_usuario] => 2
+)
+stdClass Object
+(
+    [iss] => http://localhost:8000
+    [aud] => http://localhost:8000
+    [iat] => 1737856200
+    [exp] => 1737859800
+    [user] => pedroa990@gmail.com
+    [role] => usuario_comum
+    [id_usuario] => 2
+)

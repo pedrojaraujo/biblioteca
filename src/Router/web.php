@@ -10,9 +10,13 @@ $router->add('/', [new AuthController(), 'showLoginPage']);
 $router->add('/login', [new AuthController(), 'login'], 'POST');
 $router->add('/logout', [new AuthController(), 'logout']);
 $router->add('/livros', [new LivroController(), 'index']);
-$router->add('/add-livro', [new LivroController(), 'addBook'], 'POST');
-$router->add('/update-livro', [new LivroController(), 'updateBook'], 'PUT');
-$router->add('/delete-livro', [new LivroController(), 'deleteBook'], 'DELETE');
+$router->add('/create-livro', [new LivroController(), 'createBook'], 'POST');
+$router->add('/edit-livro/[i:id]', [new LivroController(), 'editBook'], 'GET');
+$router->add('/edit-livro/[i:id]', [new LivroController(), 'editBook'], 'POST');
+$router->add('/delete-livro', [new LivroController(), 'deleteBook'], 'POST');
+$router->add('/carrinho', [new LivroController(), 'showCart']);
+$router->add('/confirmar-reservas', [new LivroController(), 'confirmReservations'], 'POST');
+$router->add('/borrow-livro/[i:id]', [new LivroController(), 'borrowLivro']); // Adicionada a rota para borrowLivro
 
 $uri = $_SERVER['PATH_INFO'] ?? '/';
 $method = $_SERVER['REQUEST_METHOD'];

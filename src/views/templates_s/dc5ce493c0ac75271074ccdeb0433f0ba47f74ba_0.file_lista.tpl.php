@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-25 22:59:40
+/* Smarty version 5.4.3, created on 2025-01-26 02:40:55
   from 'file:livros/lista.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_67956cdcd71cf5_95421187',
+  'unifunc' => 'content_6795a0b7b91fa5_68264968',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc5ce493c0ac75271074ccdeb0433f0ba47f74ba' => 
     array (
       0 => 'livros/lista.tpl',
-      1 => 1737845979,
+      1 => 1737859253,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_67956cdcd71cf5_95421187 (\Smarty\Template $_smarty_tpl) {
+function content_6795a0b7b91fa5_68264968 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros';
 ?><!DOCTYPE html>
 <html lang="pt-br">
@@ -35,67 +35,275 @@ $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca
 <body>
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Lista de Livros</h1>
-        <a href="/logout" class="btn btn-danger">Sair</a>
+        <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'administrador') {?>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createBookModal">
+                <i class="bi bi-file-earmark-plus-fill"></i>
+            </button>
+        <?php }?>
+        <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'usuario_comum') {?>
+            <a href="/carrinho" class="btn btn-success"><i class="bi bi-bag-fill"></i></a>
+        <?php }?>
+        <a href="/logout" class="btn btn-danger">Sair <i class="bi bi-box-arrow-right"></i></a>
     </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Editora</th>
-            <th>Ano de Publicação</th>
-            <th>Gênero</th>
-            <th>Estoque</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-  <tbody>
-        <?php
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h2 mb-0 py-3 text-center">Livros Disponíveis</h2>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped mb-0">
+                <thead class="bg-primary text-white">
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>Ano de Publicação</th>
+                    <th>Gênero</th>
+                    <th>Estoque</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('livros'), 'livro');
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('livro')->value) {
 $foreach0DoElse = false;
 ?>
-            <tr>
-                <td><?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('livro')['titulo'];?>
+                        <td><?php echo $_smarty_tpl->getValue('livro')['titulo'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('livro')['autor'];?>
+                        <td><?php echo $_smarty_tpl->getValue('livro')['autor'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('livro')['editora'];?>
+                        <td><?php echo $_smarty_tpl->getValue('livro')['editora'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('livro')['ano_publicacao'];?>
+                        <td><?php echo $_smarty_tpl->getValue('livro')['ano_publicacao'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('livro')['genero'];?>
+                        <td><?php echo $_smarty_tpl->getValue('livro')['genero'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('livro')['estoque'];?>
+                        <td><?php echo $_smarty_tpl->getValue('livro')['estoque'];?>
 </td>
-                <td>
-                      <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'administrador') {?>
-                        <a href="/edit-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
-" class="btn btn-warning btn-sm mb-1"><i title="Editar" class="bi bi-pencil-fill"></i></a>
-                        <a href="/delete-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
-" class="btn btn-danger btn-sm mb-1"><i title="Excluir" class="bi bi-trash-fill"></i></a>
-                    <?php } else { ?>
-                        <a href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
-" class="btn btn-primary btn-sm mb-1"><i title="Reservar" class="bi bi-plus-circle-fill"></i></i></a>
-                        <a href="/view-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
-" class="btn btn-info btn-sm mb-1"><i title="Ver mais" class="bi bi-search"></i></a>
-                    <?php }?>
-                </td>
-            </tr>
-        <?php
+                        <td>
+                            <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'administrador') {?>
+                                <a href="/edit-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-warning btn-sm mb-1">
+                                    <i title="Editar" class="bi bi-pencil-fill"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm mb-1 btn-delete-book"
+                                   data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+">
+                                    <i title="Excluir" class="bi bi-trash-fill"></i>
+                                </a>
+                            <?php } else { ?>
+                                <a href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+?id_usuario=<?php echo $_smarty_tpl->getValue('id_usuario');?>
+"
+                                   class="btn btn-primary btn-sm mb-1">
+                                    <i title="Reservar" class="bi bi-plus-circle-fill"></i>
+                                </a>
+                                <a href="/view-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-info btn-sm mb-1">
+                                    <i title="Ver mais" class="bi bi-search"></i>
+                                </a>
+                            <?php }?>
+                        </td>
+                    </tr>
+                <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="createBookModal" tabindex="-1" aria-labelledby="createBookModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createBookModalLabel">Criar Livro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createBookForm">
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="autor" class="form-label">Autor</label>
+                            <input type="text" class="form-control" id="autor" name="autor" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editora" class="form-label">Editora</label>
+                            <input type="text" class="form-control" id="editora" name="editora" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ano_publicacao" class="form-label">Ano de Publicação</label>
+                            <input type="number" class="form-control" id="ano_publicacao" name="ano_publicacao">
+                        </div>
+                        <div class="mb-3">
+                            <label for="genero" class="form-label">Gênero</label>
+                            <input type="text" class="form-control" id="genero" name="genero" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sinopse" class="form-label">Sinopse</label>
+                            <textarea class="form-control" id="sinopse" name="sinopse" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagem" class="form-label">Imagem</label>
+                            <input type="text" class="form-control" id="imagem" name="imagem" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estoque" class="form-label">Estoque</label>
+                            <input type="number" class="form-control" id="estoque" name="estoque" value="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="palavras_chave" class="form-label">Palavras-chave</label>
+                            <textarea class="form-control" id="palavras_chave" name="palavras_chave"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteBookModal" tabindex="-1" aria-labelledby="deleteBookModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteBookModalLabel">Excluir Livro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tem certeza de que deseja excluir este livro?</p>
+                    <form id="deleteBookForm">
+                        <input type="hidden" id="deleteBookId" name="id_livro">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Não</button>
+                            <button type="submit" class="btn btn-danger">Sim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Sucesso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Reservas confirmadas com sucesso!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
+
+    <?php echo '<script'; ?>
+>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Handle create book form submission
+            document.getElementById('createBookForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                fetch('/create-livro', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Erro ao criar livro: ' + data.message);
+                    }
+                }).catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao criar livro');
+                });
+            });
+        });
+
+        // Handle delete book button click
+        document.querySelectorAll('.btn-delete-book').forEach(button => {
+            button.addEventListener('click', function () {
+                document.getElementById('deleteBookId').value = this.dataset.bookId;
+                const deleteBookModal = new bootstrap.Modal(document.getElementById('deleteBookModal'));
+                deleteBookModal.show();
+            });
+        });
+
+        // Handle delete book form submission
+        document.getElementById('deleteBookForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const bookId = document.getElementById('deleteBookId').value;
+            fetch('/delete-livro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id_livro: bookId})
+            }).then(response => response.json()).then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert('Erro ao excluir livro: ' + data.message);
+                }
+            });
+        });
+
+        // Handle add to cart button click
+        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const bookId = this.dataset.bookId;
+                const bookTitle = this.dataset.bookTitle;
+                const bookAuthor = this.dataset.bookAuthor;
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({id: bookId, titulo: bookTitle, autor: bookAuthor});
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert('Livro adicionado ao carrinho!');
+            });
+        });
+
+        // Handle borrow book button click
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const idLivro = this.dataset.bookId;
+                const idUsuario = this.dataset.idUsuario;
+
+                fetch(`/borrow-livro/${idLivro}?id_usuario=${idUsuario}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                        successModal.show();
+                    } else {
+                        alert('Erro ao reservar livro: ' + data.message);
+                    }
+                });
+            });
+        });
+        })
+        ;
+    <?php echo '</script'; ?>
+>
+
 </body>
 </html><?php }
 }

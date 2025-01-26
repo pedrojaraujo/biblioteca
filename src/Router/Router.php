@@ -15,10 +15,19 @@ class Router
     public function dispatch($uri, $method)
     {
         $method = strtoupper($method);
+        $found = false;
 
-        if (isset($this->routes[$method][$uri])) {
-            call_user_func($this->routes[$method][$uri]);
-        } else {
+        foreach ($this->routes[$method] as $route => $callback) {
+            $pattern = preg_replace('/\[\w+:\w+\]/', '(\w+)', $route);
+            if (preg_match('#^' . $pattern . '$#', $uri, $matches)) {
+                array_shift($matches);
+                call_user_func_array($callback, $matches);
+                $found = true;
+                break;
+            }
+        }
+
+        if (!$found) {
             $this->show404();
         }
     }

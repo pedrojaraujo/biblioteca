@@ -105,12 +105,29 @@ class AuthController
 
         try {
             $decoded = JWT::decode($token, new Key($this->secretKey, 'HS256'));
+
+            // Ensure the decoded token includes the id_usuario property
+            if (!isset($decoded->id_usuario)) {
+                $decoded->id_usuario = $this->getUserIdByEmail($decoded->user);
+            }
+
             return $decoded;
         } catch (\Exception $e) {
             http_response_code(401);
             echo json_encode(['error' => 'Falha ao validar token: ' . $e->getMessage()]);
             exit;
         }
+    }
+
+    public function getUserIdByEmail($email)
+    {
+        // Fetch the user ID from the database using the email
+        $db = new Database();
+        $pdo = $db->getPdo();
+        $stmt = $pdo->prepare('SELECT id_usuario FROM usuarios WHERE email = :email');
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
+        return $user ? $user->id_usuario : null;
     }
 
     private function setError($message)

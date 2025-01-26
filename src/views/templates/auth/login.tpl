@@ -68,7 +68,7 @@
 <body>
 <main class="main-container">
     <section>
-        <h1 class="text-center py-3">Gerenciador de Biblioteca</h1>
+        <h1 class="text-center py-3">Library</h1>
     </section>
     <section class="login-form">
         <h1 class="text-center mb-4"><i class="bi bi-person-fill text-primary"></i></h1>

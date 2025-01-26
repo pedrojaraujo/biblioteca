@@ -52,10 +52,12 @@ class LivroController
         }
         $decoded = $this->auth->validateToken();
         $tipo_usuario = $decoded->role;
+        $id_usuario = $decoded->id_usuario;
 
         $livros = $this->livroModel->getAllBooks();
         $this->smarty->assign('tipo_usuario', $tipo_usuario);
         $this->smarty->assign('livros', $livros);
+        $this->smarty->assign('id_usuario', $id_usuario);
         $this->smarty->display('livros/lista.tpl');
     }
 
@@ -106,6 +108,7 @@ class LivroController
             $this->jsonResponse(['success' => true, 'message' => 'Livro criado com sucesso!']);
         }
     }
+
     public function editBook($id)
     {
         if (!$this->requireAuth()) {
@@ -164,27 +167,36 @@ class LivroController
 
     public function borrowLivro($id)
     {
+        // Garantir autenticação
         if (!$this->requireAuth()) {
-            header('Location: /login');
-            exit;
+            $this->jsonResponse(['success' => false, 'message' => 'Usuário não autenticado.'], 401);
         }
 
+        // Buscar o livro pelo ID
         $livro = $this->livroModel->getBookById($id);
+
         if ($livro) {
+            // Validar token e obter o ID do usuário
             $decoded = $this->auth->validateToken();
             if (!isset($decoded->id_usuario)) {
-                $decoded->id_usuario = $this->auth->getUserIdByEmail($decoded->user);
+                $decoded->id_usuario = $this->auth->getUserIdByEmail($decoded->usuario);
             }
+
             $id_usuario = $decoded->id_usuario;
+
+            // Calcular data de devolução prevista
             $data_devolucao_prevista = (new DateTime('+30 days'))->format('Y-m-d');
 
+            // Reservar o livro
             $this->livroModel->reserveBook($id, $id_usuario, $data_devolucao_prevista);
+
+            // Responder com sucesso
             $this->jsonResponse(['success' => true, 'message' => 'Livro reservado com sucesso!']);
         } else {
-            $this->jsonResponse(['success' => false, 'message' => 'Livro não encontrado.']);
+            // Livro não encontrado
+            $this->jsonResponse(['success' => false, 'message' => 'Livro não encontrado.'], 404);
         }
     }
-
 
     private
     function validateBookData($data, $isDelete = false): bool
@@ -225,10 +237,19 @@ class LivroController
 
 
     private
-    function jsonResponse(array $data)
+    function jsonResponse(array $data, int $statusCode = 200)
     {
-        header('Content-Type: application/json');
+        // Configurar o código de status HTTP
+        http_response_code($statusCode);
+
+        // Configurar o cabeçalho para JSON com charset UTF-8
+        header('Content-Type: application/json; charset=utf-8');
+
+        // Retornar o JSON formatado
         echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+        // Finalizar a execução
+        exit;
     }
 
     private

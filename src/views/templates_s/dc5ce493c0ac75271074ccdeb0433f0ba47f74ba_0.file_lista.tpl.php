@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-26 16:46:37
+/* Smarty version 5.4.3, created on 2025-01-26 18:07:51
   from 'file:livros/lista.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_679666edb52189_57319476',
+  'unifunc' => 'content_679679f74226a3_31681566',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc5ce493c0ac75271074ccdeb0433f0ba47f74ba' => 
     array (
       0 => 'livros/lista.tpl',
-      1 => 1737909965,
+      1 => 1737914871,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_679666edb52189_57319476 (\Smarty\Template $_smarty_tpl) {
+function content_679679f74226a3_31681566 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/home/pedrojaraujo/Área de trabalho/projetos/biblioteca/src/views/templates/livros';
 ?><!DOCTYPE html>
 <html lang="pt-br">
@@ -97,10 +97,15 @@ $foreach0DoElse = false;
                                     <i title="Excluir" class="bi bi-trash-fill"></i>
                                 </a>
                             <?php } else { ?>
-                                <a id="buttonBorrow" href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+                                <a
+                                        href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
 ?id_usuario=<?php echo $_smarty_tpl->getValue('id_usuario');?>
 "
-                                   class="btn btn-primary btn-sm mb-1">
+                                        class="buttonBorrow btn btn-primary btn-sm mb-1"
+                                        data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+"
+                                        data-id-usuario="<?php echo $_smarty_tpl->getValue('id_usuario');?>
+">
                                     <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                 </a>
                                 <a href="/view-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
@@ -190,11 +195,11 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div id="borrowModal" class="modal fade" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">Sucesso</h5>
+                    <h5 class="modal-title">Sucesso</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -282,27 +287,53 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             });
 
             // Handle borrow book button click
-            document.querySelectorAll('#buttonBorrow').forEach(button => {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    const idLivro = this.dataset.bookId;
-                    const idUsuario = this.dataset.idUsuario;
+            const borrowButtons = document.querySelectorAll('.buttonBorrow');
+            let currentBookId = null;
+            let currentUserId = null;
 
-                    fetch(`/borrow-livro/${idLivro}?id_usuario=${idUsuario}`, {
+            if (borrowButtons) {
+                borrowButtons.forEach(button => {
+                    button.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        currentBookId = this.getAttribute('data-book-id');
+                        currentUserId = this.getAttribute('data-id-usuario');
+                        const borrowModal = new bootstrap.Modal(document.getElementById('borrowModal'));
+                        borrowModal.show();
+                    });
+                });
+            }
+
+            const confirmBorrowButton = document.getElementById('confirmBorrow');
+            if (confirmBorrowButton) {
+                confirmBorrowButton.addEventListener('click', function () {
+                    fetch(`/borrow-livro/${currentBookId}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
-                        }
-                    }).then(response => response.json()).then(data => {
-                        if (data.success) {
-                            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                            successModal.show();
-                        } else {
-                            alert('Erro ao reservar livro: ' + data.message);
-                        }
-                    });
+                        },
+                        body: JSON.stringify({id_usuario: currentUserId})
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                alert('Livro reservado com sucesso!');
+                            } else {
+                                alert('Erro ao reservar o livro.');
+                            }
+                            const borrowModal = bootstrap.Modal.getInstance(document.getElementById('borrowModal'));
+                            borrowModal.hide();
+                        })
+                        .catch(error => {
+                            console.error('Erro:', error);
+                            alert('Ocorreu um erro ao processar a requisição.');
+                        });
                 });
-            });
+            }
         });
     <?php echo '</script'; ?>
 >

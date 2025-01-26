@@ -126,8 +126,8 @@ class AuthController
         $pdo = $db->getPdo();
         $stmt = $pdo->prepare('SELECT id_usuario FROM usuarios WHERE email = :email');
         $stmt->execute(['email' => $email]);
-        $user = $stmt->fetch(PDO::FETCH_OBJ);
-        return $user ? $user->id_usuario : null;
+        $usuario = $stmt->fetch(PDO::FETCH_OBJ);
+        return $usuario ? $usuario->id_usuario : null;
     }
 
     private function setError($message)

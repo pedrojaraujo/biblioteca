@@ -16,7 +16,7 @@ $router->add('/edit-livro/[i:id]', [new LivroController(), 'editBook'], 'POST');
 $router->add('/delete-livro', [new LivroController(), 'deleteBook'], 'POST');
 $router->add('/carrinho', [new LivroController(), 'showCart']);
 $router->add('/confirmar-reservas', [new LivroController(), 'confirmReservations'], 'POST');
-$router->add('/borrow-livro/[i:id]', [new LivroController(), 'borrowLivro']); // Adicionada a rota para borrowLivro
+$router->add('/borrow-livro/[i:id]', [new LivroController(), 'borrowLivro'], 'POST');// Adicionada a rota para borrowLivro
 
 $uri = $_SERVER['PATH_INFO'] ?? '/';
 $method = $_SERVER['REQUEST_METHOD'];

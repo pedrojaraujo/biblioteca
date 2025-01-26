@@ -59,8 +59,11 @@
                                     <i title="Excluir" class="bi bi-trash-fill"></i>
                                 </a>
                             {else}
-                                <a id="buttonBorrow" href="/borrow-livro/{$livro.id_livro}?id_usuario={$id_usuario}"
-                                   class="btn btn-primary btn-sm mb-1">
+                                <a
+                                        href="/borrow-livro/{$livro.id_livro}?id_usuario={$id_usuario}"
+                                        class="buttonBorrow btn btn-primary btn-sm mb-1"
+                                        data-book-id="{$livro.id_livro}"
+                                        data-id-usuario="{$id_usuario}">
                                     <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                 </a>
                                 <a href="/view-livro/{$livro.id_livro}" class="btn btn-info btn-sm mb-1">
@@ -147,11 +150,11 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div id="borrowModal" class="modal fade" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">Sucesso</h5>
+                    <h5 class="modal-title">Sucesso</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -236,27 +239,53 @@
             });
 
             // Handle borrow book button click
-            document.querySelectorAll('#buttonBorrow').forEach(button => {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    const idLivro = this.dataset.bookId;
-                    const idUsuario = this.dataset.idUsuario;
+            const borrowButtons = document.querySelectorAll('.buttonBorrow');
+            let currentBookId = null;
+            let currentUserId = null;
 
-                    fetch(`/borrow-livro/${idLivro}?id_usuario=${idUsuario}`, {
+            if (borrowButtons) {
+                borrowButtons.forEach(button => {
+                    button.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        currentBookId = this.getAttribute('data-book-id');
+                        currentUserId = this.getAttribute('data-id-usuario');
+                        const borrowModal = new bootstrap.Modal(document.getElementById('borrowModal'));
+                        borrowModal.show();
+                    });
+                });
+            }
+
+            const confirmBorrowButton = document.getElementById('confirmBorrow');
+            if (confirmBorrowButton) {
+                confirmBorrowButton.addEventListener('click', function () {
+                    fetch(`/borrow-livro/${currentBookId}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
-                        }
-                    }).then(response => response.json()).then(data => {
-                        if (data.success) {
-                            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                            successModal.show();
-                        } else {
-                            alert('Erro ao reservar livro: ' + data.message);
-                        }
-                    });
+                        },
+                        body: JSON.stringify({id_usuario: currentUserId})
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                alert('Livro reservado com sucesso!');
+                            } else {
+                                alert('Erro ao reservar o livro.');
+                            }
+                            const borrowModal = bootstrap.Modal.getInstance(document.getElementById('borrowModal'));
+                            borrowModal.hide();
+                        })
+                        .catch(error => {
+                            console.error('Erro:', error);
+                            alert('Ocorreu um erro ao processar a requisição.');
+                        });
                 });
-            });
+            }
         });
     </script>
 {/literal}

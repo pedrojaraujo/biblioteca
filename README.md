@@ -6,7 +6,7 @@ Este projeto foi desenvolvido como parte do estudo de **PHP** e criação de API
 
 O aplicativo visa fornecer funcionalidades básicas de gerenciamento de dados, como:
 
-- **Cadastro e autenticação de usuários.**
+- **Cadastro e autenticação de usuários**
 - **Operações CRUD (Create, Read, Update, Delete):** Permite a criação, leitura, atualização e exclusão de registros.
 - **Geração e validação de tokens JWT (JSON Web Tokens):** Para autenticação e autorização de acesso.
 - **Conexão com banco de dados MySQL:** Para armazenamento e gerenciamento dos dados.
@@ -22,7 +22,8 @@ O aplicativo visa fornecer funcionalidades básicas de gerenciamento de dados, c
 - **Dotenv:** Para carregar variáveis de ambiente de forma segura.
 - **Composer:** Gerenciador de dependências para PHP.
 - **.htaccess:** Configurações e segurança no ambiente de desenvolvimento.
-- **Smarty:** Template engine para separar a lógica da apresentação.
+- **SmartyTemplate:** Template engine para separar a lógica da apresentação.
+- **Docker e Docker Compose:** Para facilitar a configuração e execução do ambiente de desenvolvimento.
 
 ## **Funcionalidades**
 
@@ -46,39 +47,37 @@ Os testes foram realizados utilizando o **Postman**, onde foram validadas:
 - Funcionamento da autenticação JWT.
 - Operações CRUD no banco de dados.
 
-## Como Rodar o Projeto
+## **Como Rodar o Projeto**
 
 1. **Clone o repositório**:
 
    ```bash
    git clone https://github.com/pedrojaraujo/biblioteca.git
+   ```
 
 2. **Navegue até o diretório do projeto**:
 
    ```bash
    cd biblioteca
+   ```
 
-3. **Instale as dependências do Composer**:
-
-   ```bash
-   composer install
-
-4. **Configure o arquivo .env**:
+3. **Configure o arquivo `.env`**:
 
    ```bash
-    DB_HOST=localhost
-    DB_NAME=seu_banco
-    DB_USER=seu_user
-    DB_PASSWORD=sua_senha
-    SECRET_KEY=sua_chave_secreta
+   cp .env.example .env
+   ```
 
-5. **Inicie o servidor**:
+4. **Inicie o projeto com Docker**:
 
    ```bash
-   php -S localhost:8000 -t public
+   docker-compose up --build -d
+   ```
 
+5. **Acesse a aplicação**:
 
+   - No navegador, vá para: [http://localhost:8000](http://localhost:8000)
 
 ## **Licença**
 
 Este projeto é licenciado sob os termos da licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para obter mais detalhes.
+

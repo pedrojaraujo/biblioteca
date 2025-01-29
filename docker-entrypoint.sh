@@ -63,6 +63,12 @@ if [ $count -eq $max_tries ]; then
     exit 1
 fi
 
+# Verificar se o autoload.php existe
+if [ ! -f /var/www/html/vendor/autoload.php ]; then
+    echo "Erro: autoload.php não encontrado. Instalando dependências do Composer..."
+    composer install --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
+fi
+
 # Executa as migrations e seeds
 echo "Executando migrations e seeds..."
 php /var/www/html/src/Database/init.php

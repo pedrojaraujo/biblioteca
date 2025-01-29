@@ -29,9 +29,6 @@ RUN mkdir -p /var/www/html
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
-# Copie o .env.example para .env
-COPY .env /var/www/html/.env
-
 # Copie apenas os arquivos do Composer primeiro
 COPY composer.json composer.lock /var/www/html/
 
@@ -39,7 +36,7 @@ COPY composer.json composer.lock /var/www/html/
 WORKDIR /var/www/html
 
 # Instale as dependências do Composer
-RUN composer install --no-interaction --no-scripts --no-progress --prefer-dist
+RUN composer install --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
 
 # Copie o restante dos arquivos do projeto
 COPY . .

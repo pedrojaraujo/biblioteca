@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-29 21:55:32
+/* Smarty version 5.4.3, created on 2025-01-29 22:34:49
   from 'file:errors/404.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_679aa3d4a99684_20719142',
+  'unifunc' => 'content_679aad0971a415_46901319',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9123b78ed186247caef450a2ccec768c3d76f87b' => 
     array (
       0 => 'errors/404.tpl',
-      1 => 1738148131,
+      1 => 1738188672,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_679aa3d4a99684_20719142 (\Smarty\Template $_smarty_tpl) {
+function content_679aad0971a415_46901319 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/html/src/views/templates/errors';
 ?><!DOCTYPE html>
 <html lang="en">

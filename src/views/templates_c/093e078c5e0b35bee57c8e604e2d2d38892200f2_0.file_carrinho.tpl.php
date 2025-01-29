@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.3, created on 2025-01-29 14:58:00
+  from 'file:livros/carrinho.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.3',
+  'unifunc' => 'content_679a41f82224f8_02506953',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '093e078c5e0b35bee57c8e604e2d2d38892200f2' => 
+    array (
+      0 => 'livros/carrinho.tpl',
+      1 => 1738148131,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_679a41f82224f8_02506953 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/var/www/html/src/views/templates/livros';
+?><!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -36,9 +60,12 @@
                 reservados.</p>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    {literal}
-        <script>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+    
+        <?php echo '<script'; ?>
+>
             document.addEventListener('DOMContentLoaded', function() {
                 function fetchUserReservations() {
                     fetch('/get-user-reservations')
@@ -152,8 +179,10 @@
                         });
                 });
             });
-        </script>
-    {/literal}
+        <?php echo '</script'; ?>
+>
+    
 </body>
 
-</html>
+</html><?php }
+}

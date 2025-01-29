@@ -1,0 +1,121 @@
+[29-Jan-2025 12:10:12 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:14 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:16 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:19 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:22 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:26 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:31 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:39 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:10:54 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:11:21 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:12:14 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Biblioteca\Database\Seeds\DatabaseSeeder::__construct(), 0 passed in /var/www/html/src/Database/init.php on line 18 and exactly 1 expected in /var/www/html/src/Database/Seeds/DatabaseSeeder.php:12
+Stack trace:
+#0 /var/www/html/src/Database/init.php(18): Biblioteca\Database\Seeds\DatabaseSeeder->__construct()
+#1 {main}
+  thrown in /var/www/html/src/Database/Seeds/DatabaseSeeder.php on line 12
+[29-Jan-2025 12:13:02 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:02 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:04 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:04 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:07 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:07 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:09 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:09 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:12 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:12 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:15 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:15 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:21 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:21 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:29 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:29 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:13:44 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:13:44 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:14:11 UTC] PHP Warning:  file_get_contents(/var/www/html/src/Database/migrations.sql): Failed to open stream: No such file or directory in /var/www/html/src/Database/init.php on line 14
+[29-Jan-2025 12:14:11 UTC] PHP Fatal error:  Uncaught ValueError: PDO::exec(): Argument #1 ($statement) must not be empty in /var/www/html/src/Database/init.php:15
+Stack trace:
+#0 /var/www/html/src/Database/init.php(15): PDO->exec('')
+#1 {main}
+  thrown in /var/www/html/src/Database/init.php on line 15
+[29-Jan-2025 12:14:49 UTC] Erro ao criar usuário: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'tipo_usuario' at row 1
+[29-Jan-2025 12:14:49 UTC] Erro ao criar usuário: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'tipo_usuario' at row 1
+[29-Jan-2025 12:19:08 UTC] Usuário criado: admin@example.com
+[29-Jan-2025 12:19:08 UTC] Usuário criado: user@example.com
+[29-Jan-2025 12:22:04 UTC] Usuário criado: admin@example.com
+[29-Jan-2025 12:22:04 UTC] Usuário criado: user@example.com

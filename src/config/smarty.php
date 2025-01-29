@@ -7,20 +7,25 @@ use Smarty\Smarty;
 function getSmarty()
 {
     $smarty = new Smarty();
+    
+    // Caminhos absolutos para os diretórios do Smarty
+    $baseDir = __DIR__ . '/..';
+    
+    $smarty->setTemplateDir($baseDir . '/views/templates/');
+    $smarty->setCompileDir($baseDir . '/views/templates_c/');
+    $smarty->setCacheDir($baseDir . '/views/cache/');
+    $smarty->setConfigDir($baseDir . '/views/configs/');
 
-    // Configuração dos diretórios
-    $smarty->setTemplateDir(__DIR__ . '/../views/templates/');
-    $smarty->setCompileDir(__DIR__ . '/../views/templates_s/');
-    $smarty->setCacheDir(__DIR__ . '/../views/cache/');
+    // Configurações de debug
+    $smarty->debugging = true;
+    $smarty->caching = false;
+    $smarty->force_compile = true;
 
-    // Defina as permissões adequadas para as pastas
-    if (!is_dir($smarty->getCompileDir())) {
-        mkdir($smarty->getCompileDir(), 0775, true);
-    }
-
-    if (!is_dir($smarty->getCacheDir())) {
-        mkdir($smarty->getCacheDir(), 0775, true);
-    }
-
+    // Debug
+    error_log("Smarty template dir: " . print_r($smarty->getTemplateDir(), true));
+    error_log("Smarty compile dir: " . $smarty->getCompileDir());
+    error_log("Smarty cache dir: " . $smarty->getCacheDir());
+    error_log("Smarty config dir: " . print_r($smarty->getConfigDir(), true));
+    
     return $smarty;
 }

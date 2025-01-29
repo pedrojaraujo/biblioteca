@@ -28,50 +28,72 @@ class AuthController
 
     public function login()
     {
+        $logFile = __DIR__ . '/../../logs/auth.log';
+        file_put_contents($logFile, "\n=== Início do processo de login ===\n", FILE_APPEND);
+        file_put_contents($logFile, "URI: " . $_SERVER['REQUEST_URI'] . "\n", FILE_APPEND);
+        file_put_contents($logFile, "Método: " . $_SERVER['REQUEST_METHOD'] . "\n", FILE_APPEND);
+        
+        // Garantir que a resposta seja JSON
+        header('Content-Type: application/json');
+        
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
-        // Obter o corpo da requisição JSON
         $input = file_get_contents('php://input');
+        file_put_contents($logFile, "Dados brutos recebidos: " . $input . "\n", FILE_APPEND);
+
         $data = json_decode($input, true);
+        file_put_contents($logFile, "Dados decodificados: " . print_r($data, true) . "\n", FILE_APPEND);
 
         $email = $data['email'] ?? null;
         $senha = $data['senha'] ?? null;
 
-        if (!$email || !$senha) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Credenciais incompletas']);
-            return;
-        }
+        file_put_contents($logFile, "Tentando login com email: $email\n", FILE_APPEND);
 
-        $db = new Database();
-        $pdo = $db->getPdo();
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email");
-        $stmt->execute(['email' => $email]);
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        try {
+            $db = new Database();
+            $pdo = $db->getPdo();
+            
+            $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email");
+            $stmt->execute(['email' => $email]);
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($usuario && password_verify($senha, $usuario['senha'])) {
-            $payload = [
-                'iss' => 'http://localhost:8000',
-                'aud' => 'http://localhost:8000',
-                'iat' => time(),
-                'exp' => time() + (60 * 60),
-                'user' => $email,
-                'role' => $usuario['tipo_usuario']
-            ];
+            file_put_contents($logFile, "Usuário encontrado: " . ($usuario ? 'SIM' : 'NÃO') . "\n", FILE_APPEND);
+            if ($usuario) {
+                file_put_contents($logFile, "Dados do usuário: " . print_r($usuario, true) . "\n", FILE_APPEND);
+                $senhaValida = password_verify($senha, $usuario['senha']);
+                file_put_contents($logFile, "Senha válida: " . ($senhaValida ? 'SIM' : 'NÃO') . "\n", FILE_APPEND);
+            }
 
-            $jwt = JWT::encode($payload, $this->secretKey, 'HS256');
+            if ($usuario && password_verify($senha, $usuario['senha'])) {
+                $payload = [
+                    'iss' => 'http://localhost:8000',
+                    'aud' => 'http://localhost:8000',
+                    'iat' => time(),
+                    'exp' => time() + (60 * 60),
+                    'user' => $email,
+                    'role' => $usuario['tipo_usuario'],
+                    'id_usuario' => $usuario['id_usuario']
+                ];
 
-            // Armazenar o token na sessão
-            $_SESSION['jwt_token'] = $jwt;
-            error_log('JWT Token: ' . $_SESSION['jwt_token']);
+                $jwt = JWT::encode($payload, $this->secretKey, 'HS256');
 
-            http_response_code(200);
-            echo json_encode(['token' => $jwt]);
-        } else {
-            http_response_code(401);
-            echo json_encode(['error' => 'Credenciais inválidas']);
+                // Armazenar o token na sessão
+                $_SESSION['jwt_token'] = $jwt;
+                error_log("Token armazenado na sessão: " . $jwt);
+
+                http_response_code(200);
+                echo json_encode(['token' => $jwt]);
+            } else {
+                http_response_code(401);
+                echo json_encode(['error' => 'Credenciais inválidas']);
+            }
+        } catch (\Exception $e) {
+            file_put_contents($logFile, "Erro durante o login: " . $e->getMessage() . "\n", FILE_APPEND);
+            file_put_contents($logFile, "Stack trace: " . $e->getTraceAsString() . "\n", FILE_APPEND);
+            http_response_code(500);
+            echo json_encode(['error' => 'Erro ao processar o login']);
         }
     }
 
@@ -91,31 +113,27 @@ class AuthController
 
     public function validateToken()
     {
+        error_log("\n=== Validando Token ===");
+        
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
         if (!isset($_SESSION['jwt_token'])) {
-            http_response_code(401);
-            echo json_encode(['error' => 'Token inválido ou ausente']);
-            exit;
+            error_log("Token não encontrado na sessão");
+            return false;
         }
 
         $token = $_SESSION['jwt_token'];
+        error_log("Token encontrado: " . $token);
 
         try {
             $decoded = JWT::decode($token, new Key($this->secretKey, 'HS256'));
-
-            // Ensure the decoded token includes the id_usuario property
-            if (!isset($decoded->id_usuario)) {
-                $decoded->id_usuario = $this->getUserIdByEmail($decoded->user);
-            }
-
+            error_log("Token decodificado com sucesso: " . print_r($decoded, true));
             return $decoded;
         } catch (\Exception $e) {
-            http_response_code(401);
-            echo json_encode(['error' => 'Falha ao validar token: ' . $e->getMessage()]);
-            exit;
+            error_log("Erro ao decodificar token: " . $e->getMessage());
+            return false;
         }
     }
 

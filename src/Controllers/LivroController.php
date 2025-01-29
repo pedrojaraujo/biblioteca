@@ -30,18 +30,23 @@ class LivroController
         }
 
         if (!isset($_SESSION['jwt_token'])) {
-            http_response_code(401);
-            header('Location: /login');
-            exit;
+            // Log para debug
+            error_log("JWT Token não encontrado na sessão");
+            return false;
         }
 
-        $decoded = $this->auth->validateToken();
-        if (!$decoded) {
-            http_response_code(401);
-            header('Location: /login');
-            exit;
+        try {
+            $decoded = $this->auth->validateToken();
+            if (!$decoded) {
+                error_log("Token inválido");
+                return false;
+            }
+            error_log("Token validado com sucesso: " . print_r($decoded, true));
+            return true;
+        } catch (\Exception $e) {
+            error_log("Erro na validação do token: " . $e->getMessage());
+            return false;
         }
-        return true;
     }
 
     private
@@ -135,19 +140,56 @@ class LivroController
 
     public function index()
     {
+        error_log("\n=== Início do método index() ===");
+        
         if (!$this->requireAuth()) {
+            error_log("Autenticação falhou - redirecionando para login");
             header('Location: /login');
             exit;
         }
-        $decoded = $this->auth->validateToken();
-        $tipo_usuario = $decoded->role;
-        $id_usuario = $decoded->id_usuario;
 
-        $livros = $this->livroModel->getAllBooks();
-        $this->smarty->assign('tipo_usuario', $tipo_usuario);
-        $this->smarty->assign('livros', $livros);
-        $this->smarty->assign('id_usuario', $id_usuario);
-        $this->smarty->display('livros/lista.tpl');
+        try {
+            $decoded = $this->auth->validateToken();
+            error_log("Token decodificado: " . print_r($decoded, true));
+            
+            $tipo_usuario = $decoded->role;
+            $id_usuario = $decoded->id_usuario;
+
+            error_log("Usuário autenticado - Tipo: $tipo_usuario, ID: $id_usuario");
+            error_log("Tentando carregar template: livros/lista.tpl");
+
+            $livros = $this->livroModel->getAllBooks();
+            error_log("Livros carregados: " . count($livros));
+            
+            // Debug dos dados
+            error_log("Dados para o template:");
+            error_log("tipo_usuario: " . $tipo_usuario);
+            error_log("id_usuario: " . $id_usuario);
+            error_log("livros: " . print_r($livros, true));
+
+            $this->smarty->assign('tipo_usuario', $tipo_usuario);
+            $this->smarty->assign('livros', $livros);
+            $this->smarty->assign('id_usuario', $id_usuario);
+
+            // Verificar se o template existe
+            $templatePath = $this->smarty->getTemplateDir()[0] . 'livros/lista.tpl';
+            error_log("Verificando se o template existe em: " . $templatePath);
+            if (!file_exists($templatePath)) {
+                error_log("ERRO: Template não encontrado em: " . $templatePath);
+                throw new \Exception("Template não encontrado: livros/lista.tpl");
+            } else {
+                error_log("Template encontrado. Conteúdo:");
+                error_log(file_get_contents($templatePath));
+            }
+
+            error_log("Template encontrado, tentando exibir...");
+            $this->smarty->display('livros/lista.tpl');
+            error_log("Template carregado com sucesso");
+        } catch (\Exception $e) {
+            error_log("Erro ao carregar página de livros: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
+            throw $e;
+        }
     }
 
     public function viewBook($id)

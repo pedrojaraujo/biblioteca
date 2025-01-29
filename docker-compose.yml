@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     build: .
@@ -8,33 +6,52 @@ services:
     restart: always
     volumes:
       - .:/var/www/html
+      - ./logs/apache2:/var/log/apache2
     logging:
       driver: json-file
       options:
         max-size: "10m"
         max-file: "3"
     environment:
-      - DB_HOST=db
-      - DB_NAME=biblioteca
-      - DB_USER=root
-      - DB_PASSWORD=root
-      - JWT_SECRET_KEY=sua_chave_secreta
-    depends_on:
-      - db
-
-  db:
-    image: mysql:8.0
-    environment:
       - DB_HOST=${DB_HOST}
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+      - PHP_MEMORY_LIMIT=256M
+      - UPLOAD_MAX_FILESIZE=10M
+      - POST_MAX_SIZE=10M
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3308:3306"
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    command:
+      - --default-authentication-plugin=caching_sha2_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --host_cache_size=0
+      - --pid-file=/tmp/mysqld.pid
     restart: always
     volumes:
       - db_data:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 5s
       timeout: 10s
       retries: 10
+    env_file:
+      - .env
+
+volumes:
+  db_data:

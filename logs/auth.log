@@ -1,0 +1,695 @@
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$9S87QBarSmzBQhVcCbXEVeR5NAy3NmN/PHROWBy6UyZ3B4rgzxWim
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+JWT Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE3MzgxNTcxNTAsImV4cCI6MTczODE2MDc1MCwidXNlciI6InVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoidXN1YXJpb19jb211bSJ9.0g3UZwRKyExH4lctHxMtcG32XxLipU-LHUI0fohj74o
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$9S87QBarSmzBQhVcCbXEVeR5NAy3NmN/PHROWBy6UyZ3B4rgzxWim
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+JWT Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE3MzgxNTcxNTMsImV4cCI6MTczODE2MDc1MywidXNlciI6InVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoidXN1YXJpb19jb211bSJ9.oNkkRYevgN62-r-a9QVjclfO-_hgRr7mjMSR6YBIgLc
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$Ko1p4x8134z8qYbmvltrXOSMc2Q.cK/gXmAKttBfk4B0dNEVff0k2
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+JWT Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE3MzgxNTczMzgsImV4cCI6MTczODE2MDkzOCwidXNlciI6InVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoidXN1YXJpb19jb211bSJ9.i28q24R7iR-WAkdZph__Dpmp_1OZgbCLrmdOZsmwAaY
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user1234"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user1234
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$Ko1p4x8134z8qYbmvltrXOSMc2Q.cK/gXmAKttBfk4B0dNEVff0k2
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$Ko1p4x8134z8qYbmvltrXOSMc2Q.cK/gXmAKttBfk4B0dNEVff0k2
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+JWT Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE3MzgxNTc0MDQsImV4cCI6MTczODE2MTAwNCwidXNlciI6InVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoidXN1YXJpb19jb211bSJ9.TPmZ6u2uFR-UWdceIRzs7IaXAQTCcONNVkEyPzEowIY
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$sgwzAhDD8XePOzL73VsIje.d4Vu0Qf7Le8YYSCWmUtqLtvn2gkEIm
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+JWT Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE3MzgxNTgwMDAsImV4cCI6MTczODE2MTYwMCwidXNlciI6InVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoidXN1YXJpb19jb211bSJ9.O-eQMttw1JIMBVLyk_ojf3fCnZJR--7W_ov0aFgIEBY
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@exemple.com","senha":"user1234"}
+Dados decodificados: Array
+(
+    [email] => user@exemple.com
+    [senha] => user1234
+)
+
+Tentando login com email: user@exemple.com
+Usuário encontrado: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@exemple.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@exemple.com
+    [senha] => user123
+)
+
+Tentando login com email: user@exemple.com
+Usuário encontrado: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$spq.Zn1V2N4QKm91N3/YE.I62IAdRmVJEkzcpPri65XMT3MIjv.Qa
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$spq.Zn1V2N4QKm91N3/YE.I62IAdRmVJEkzcpPri65XMT3MIjv.Qa
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$spq.Zn1V2N4QKm91N3/YE.I62IAdRmVJEkzcpPri65XMT3MIjv.Qa
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user1234"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user1234
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$vDASpsZfoa5WMIup3dZ02.ZNlu6n4b31VYFX7rvsKq3q6MYfJ.Mw.
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$vDASpsZfoa5WMIup3dZ02.ZNlu6n4b31VYFX7rvsKq3q6MYfJ.Mw.
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$vDASpsZfoa5WMIup3dZ02.ZNlu6n4b31VYFX7rvsKq3q6MYfJ.Mw.
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$QJyQuc7kgDfFQxcbGG6je./ltd9jy23W6PxC/d1hd.OSsnrUSodF2
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$QJyQuc7kgDfFQxcbGG6je./ltd9jy23W6PxC/d1hd.OSsnrUSodF2
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.co","senha":"user1234"}
+Dados decodificados: Array
+(
+    [email] => user@example.co
+    [senha] => user1234
+)
+
+Tentando login com email: user@example.co
+Usuário encontrado: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.co","senha":"user1234"}
+Dados decodificados: Array
+(
+    [email] => user@example.co
+    [senha] => user1234
+)
+
+Tentando login com email: user@example.co
+Usuário encontrado: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.co","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.co
+    [senha] => user123
+)
+
+Tentando login com email: user@example.co
+Usuário encontrado: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$wb5HeDleHmCLyXwfpOVJN.R8ztes7FkDc2zfkwoRIs1wpDpEl5kWK
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$7iGBwnsqyw5YLZMkQpmwSu2M0DGbMFCrx3d5Ps.Y9Yn52zCSB2b.i
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$KpJLOxC5oxJEPEuFAOlhVOmLOItH4EfXDI8FRZ/vsbaBfyAxpMuCG
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$KpJLOxC5oxJEPEuFAOlhVOmLOItH4EfXDI8FRZ/vsbaBfyAxpMuCG
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$OaOsQ8cpYUx5psZoa3xBF.QVZ8Cf5bry9oTPGRFQAoVdkujRGeZZa
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$/VTV/ps/hDZH445oxUaBuOQdjQIBS3s1fD.c4V43kszGgDwjIy8wC
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"admin@example.com","senha":"ADMIN123"}
+Dados decodificados: Array
+(
+    [email] => admin@example.com
+    [senha] => ADMIN123
+)
+
+Tentando login com email: admin@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 1
+    [nome] => Admin
+    [email] => admin@example.com
+    [senha] => $2y$12$YyNlnkGCqLx4JOGniRJLDOZdeTPbQmjSvGMaRfdjbrs7YcTpKHNDS
+    [tipo_usuario] => administrador
+    [telefone] => 11999999999
+    [endereco] => Rua Admin, 123
+)
+
+Senha válida: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"admin@example.com","senha":"ADMIN123"}
+Dados decodificados: Array
+(
+    [email] => admin@example.com
+    [senha] => ADMIN123
+)
+
+Tentando login com email: admin@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 1
+    [nome] => Admin
+    [email] => admin@example.com
+    [senha] => $2y$12$YyNlnkGCqLx4JOGniRJLDOZdeTPbQmjSvGMaRfdjbrs7YcTpKHNDS
+    [tipo_usuario] => administrador
+    [telefone] => 11999999999
+    [endereco] => Rua Admin, 123
+)
+
+Senha válida: NÃO
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"admin@example.com","senha":"admin123"}
+Dados decodificados: Array
+(
+    [email] => admin@example.com
+    [senha] => admin123
+)
+
+Tentando login com email: admin@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 1
+    [nome] => Admin
+    [email] => admin@example.com
+    [senha] => $2y$12$YyNlnkGCqLx4JOGniRJLDOZdeTPbQmjSvGMaRfdjbrs7YcTpKHNDS
+    [tipo_usuario] => administrador
+    [telefone] => 11999999999
+    [endereco] => Rua Admin, 123
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$fceUHNUHQa1VwRI.qGBrf.jtn1ygNZ.wajYvrz5wWwWiSAhzMrR/S
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$6dNJmrTuMBvzMpO67yABGuSJQoY5vKwObPDQjddSv2e738EaMMnNy
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM

@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.3, created on 2025-01-29 15:22:27
+  from 'file:livros/lista.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.3',
+  'unifunc' => 'content_679a47b3c23856_47291899',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '6e81ba2ed42a0bc7ff97972e621bc3e7cbb51be4' => 
+    array (
+      0 => 'livros/lista.tpl',
+      1 => 1738148131,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_679a47b3c23856_47291899 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/var/www/html/src/views/templates/livros';
+?><!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -13,14 +37,14 @@
 <body>
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            {if $tipo_usuario == 'administrador'}
+            <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'administrador') {?>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createBookModal">
                     <i class="bi bi-file-earmark-plus-fill"></i>
                 </button>
-            {/if}
-            {if $tipo_usuario == 'usuario_comum'}
+            <?php }?>
+            <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'usuario_comum') {?>
                 <a href="/carrinho" class="btn btn-success"><i class="bi bi-bag-fill"></i></a>
-            {/if}
+            <?php }?>
             <a href="/logout" class="btn btn-danger">Sair <i class="bi bi-box-arrow-right"></i></a>
         </div>
         <div class="card shadow-sm">
@@ -42,37 +66,58 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {foreach $livros as $livro}
+                        <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('livros'), 'livro');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('livro')->value) {
+$foreach0DoElse = false;
+?>
                             <tr>
-                                <td>{$livro.id_livro}</td>
-                                <td>{$livro.titulo}</td>
-                                <td>{$livro.autor}</td>
-                                <td>{$livro.editora}</td>
-                                <td>{$livro.ano_publicacao}</td>
-                                <td>{$livro.genero}</td>
-                                <td>{$livro.estoque}</td>
+                                <td><?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('livro')['titulo'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('livro')['autor'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('livro')['editora'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('livro')['ano_publicacao'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('livro')['genero'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('livro')['estoque'];?>
+</td>
                                 <td>
-                                    {if $tipo_usuario == 'administrador'}
-                                        <a href="/edit-livro/{$livro.id_livro}" class="btn btn-warning btn-sm mb-1">
+                                    <?php if ($_smarty_tpl->getValue('tipo_usuario') == 'administrador') {?>
+                                        <a href="/edit-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-warning btn-sm mb-1">
                                             <i title="Editar" class="bi bi-pencil-fill"></i>
                                         </a>
                                         <a href="#" class="btn btn-danger btn-sm mb-1 btn-delete-book"
-                                            data-book-id="{$livro.id_livro}">
+                                            data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+">
                                             <i title="Excluir" class="bi bi-trash-fill"></i>
                                         </a>
-                                    {else}
-                                        <a href="/borrow-livro/{$livro.id_livro}?id_usuario={$id_usuario}"
-                                            class="buttonBorrow btn btn-primary btn-sm mb-1" data-book-id="{$livro.id_livro}"
-                                            data-id-usuario="{$id_usuario}">
+                                    <?php } else { ?>
+                                        <a href="/borrow-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+?id_usuario=<?php echo $_smarty_tpl->getValue('id_usuario');?>
+"
+                                            class="buttonBorrow btn btn-primary btn-sm mb-1" data-book-id="<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+"
+                                            data-id-usuario="<?php echo $_smarty_tpl->getValue('id_usuario');?>
+">
                                             <i title="Reservar" class="bi bi-plus-circle-fill"></i>
                                         </a>
-                                        <a href="/view-livro/{$livro.id_livro}" class="btn btn-info btn-sm mb-1">
+                                        <a href="/view-livro/<?php echo $_smarty_tpl->getValue('livro')['id_livro'];?>
+" class="btn btn-info btn-sm mb-1">
                                             <i title="Ver mais" class="verMais bi bi-search"></i>
                                         </a>
-                                    {/if}
+                                    <?php }?>
                                 </td>
                             </tr>
-                        {/foreach}
+                        <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     </tbody>
                 </table>
             </div>
@@ -173,9 +218,12 @@
                 reservados.</p>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    {literal}
-        <script>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+    
+        <?php echo '<script'; ?>
+>
             document.addEventListener('DOMContentLoaded', function() {
                 // Handle create book form submission
                 document.getElementById('createBookForm').addEventListener('submit', function(event) {
@@ -292,8 +340,10 @@
                 });
             }
             });
-        </script>
-    {/literal}
+        <?php echo '</script'; ?>
+>
+    
 </body>
 
-</html>
+</html><?php }
+}

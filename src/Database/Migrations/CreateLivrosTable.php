@@ -14,7 +14,7 @@ class CreateLivrosTable
             titulo VARCHAR(255) NOT NULL,
             autor VARCHAR(255) NOT NULL,
             editora VARCHAR(255) NOT NULL,
-            ano_publicacao YEAR NOT NULL,
+            ano_publicacao SMALLINT NOT NULL,
             genero VARCHAR(255) NOT NULL,
             sinopse TEXT NOT NULL,
             imagem VARCHAR(255) NOT NULL,

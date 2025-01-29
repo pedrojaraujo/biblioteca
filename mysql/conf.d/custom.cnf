@@ -1,0 +1,4 @@
+[mysqld]
+default_time_zone='+00:00'
+innodb_buffer_pool_size=256M
+max_connections=100 

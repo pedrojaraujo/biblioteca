@@ -24,4 +24,10 @@ $router->add('/view-livro/[i:id]', [new LivroController(), 'viewBook'], 'GET');
 $uri = $_SERVER['PATH_INFO'] ?? '/';
 $method = $_SERVER['REQUEST_METHOD'];
 
-$router->dispatch($uri, $method);
+try {
+    $router->dispatch($uri, $method);
+} catch (Exception $e) {
+    $smarty = getSmarty();
+    $smarty->assign('error', $e->getMessage());
+    $smarty->display('errors/404.tpl');
+}

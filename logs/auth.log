@@ -693,3 +693,53 @@ Dados do usuário: Array
 )
 
 Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"admin@example.com","senha":"admin123"}
+Dados decodificados: Array
+(
+    [email] => admin@example.com
+    [senha] => admin123
+)
+
+Tentando login com email: admin@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 1
+    [nome] => Admin
+    [email] => admin@example.com
+    [senha] => $2y$12$ORvDaJYan34Cu5cphIIxauXpDP5R/zuPFKtSCT2YAopqHA9d8XDlW
+    [tipo_usuario] => administrador
+    [telefone] => 11999999999
+    [endereco] => Rua Admin, 123
+)
+
+Senha válida: SIM
+
+=== Início do processo de login ===
+URI: /login
+Método: POST
+Dados brutos recebidos: {"email":"user@example.com","senha":"user123"}
+Dados decodificados: Array
+(
+    [email] => user@example.com
+    [senha] => user123
+)
+
+Tentando login com email: user@example.com
+Usuário encontrado: SIM
+Dados do usuário: Array
+(
+    [id_usuario] => 2
+    [nome] => Usuário
+    [email] => user@example.com
+    [senha] => $2y$12$cIHPjNFfS45rcUHkTUm5ZOiwDf3vKa0TK7edRgzkiq6BEzaSQYVtC
+    [tipo_usuario] => usuario_comum
+    [telefone] => 11988888888
+    [endereco] => Rua Usuario, 456
+)
+
+Senha válida: SIM

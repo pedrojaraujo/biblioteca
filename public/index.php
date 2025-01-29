@@ -30,7 +30,7 @@ try {
         header('Access-Control-Allow-Methods: POST');
         header('Access-Control-Allow-Headers: Content-Type');
         header('Access-Control-Allow-Credentials: true');
-        
+
         $controller = new Biblioteca\Controllers\AuthController();
         $controller->login();
         exit;
@@ -39,14 +39,15 @@ try {
     // Rotas de página (HTML)
     require_once __DIR__ . '/../src/Router/web.php';
 
+} catch (\Smarty\Exception $e) {
 } catch (Exception $e) {
-    if (strpos($uri, '/api/') === 0) {
+    if (str_starts_with($uri, '/api/')) {
         // Se for uma rota da API, retorna erro em JSON
         header('Content-Type: application/json');
         http_response_code(500);
         echo json_encode(['error' => $e->getMessage()]);
     } else {
-        // Se for uma rota de página, mostra o template de erro
+        // Se for uma rota de página, mostra o modelo de erro
         $smarty = getSmarty();
         $smarty->assign('error', $e->getMessage());
         $smarty->display('errors/404.tpl');

@@ -6,7 +6,7 @@ use Biblioteca\Database;
 
 class CreateColecoesTable
 {
-    public static function up()
+    public static function up(): void
     {
         $pdo = (new Database())->getPdo();
         $sql = "CREATE TABLE IF NOT EXISTS colecoes (

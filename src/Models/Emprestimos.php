@@ -15,7 +15,7 @@ class Emprestimo
         $this->db = new Database();
     }
 
-    public function createLoan($livro_id, $usuario_id)
+    public function createLoan($livro_id, $usuario_id): true
     {
         try {
             $pdo = $this->db->getPdo();
@@ -66,7 +66,7 @@ class Emprestimo
         }
     }
 
-    public function returnBook($emprestimo_id)
+    public function returnBook($emprestimo_id): true
     {
         try {
             $pdo = $this->db->getPdo();
@@ -119,7 +119,7 @@ class Emprestimo
         }
     }
 
-    public function getAllLoans()
+    public function getAllLoans(): array
     {
         $pdo = $this->db->getPdo();
         $stmt = $pdo->query("
@@ -133,7 +133,7 @@ class Emprestimo
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getLoansByUser($usuario_id)
+    public function getLoansByUser($usuario_id): array
     {
         $pdo = $this->db->getPdo();
         $stmt = $pdo->prepare("

@@ -9,7 +9,7 @@ class CreateUsuariosTable
     public static function up()
     {
         $sql = "CREATE TABLE IF NOT EXISTS usuarios (
-            id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+            id_usuario BIGINT AUTO_INCREMENT PRIMARY KEY,
             nome VARCHAR(100) NOT NULL,
             email VARCHAR(100) NOT NULL UNIQUE,
             senha VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ class CreateUsuariosTable
 
     public static function down()
     {
-        $pdo = (new Database())->getPdo();
+        $pdo = new Database()->getPdo();
         $pdo->exec("DROP TABLE IF EXISTS usuarios");
     }
 }

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-29 14:58:00
+/* Smarty version 5.4.3, created on 2025-01-29 21:55:17
   from 'file:livros/carrinho.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_679a41f82224f8_02506953',
+  'unifunc' => 'content_679aa3c5493a07_16673125',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_679a41f82224f8_02506953 (\Smarty\Template $_smarty_tpl) {
+function content_679aa3c5493a07_16673125 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/html/src/views/templates/livros';
 ?><!DOCTYPE html>
 <html lang="pt-br">

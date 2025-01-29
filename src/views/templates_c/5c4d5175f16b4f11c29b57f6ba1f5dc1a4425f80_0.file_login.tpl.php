@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.4.3, created on 2025-01-29 15:22:10
+/* Smarty version 5.4.3, created on 2025-01-29 21:55:32
   from 'file:auth/login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_679a47a2d34361_46788041',
+  'unifunc' => 'content_679aa3d49a3b69_27016640',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_679a47a2d34361_46788041 (\Smarty\Template $_smarty_tpl) {
+function content_679aa3d49a3b69_27016640 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/html/src/views/templates/auth';
 ?><!DOCTYPE html>
 <html lang="pt-br">

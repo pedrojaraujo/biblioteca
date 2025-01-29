@@ -30,7 +30,7 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
 # Copie o .env.example para .env
-COPY .env.example /var/www/html/.env
+COPY .env /var/www/html/.env
 
 # Copie apenas os arquivos do Composer primeiro
 COPY composer.json composer.lock /var/www/html/

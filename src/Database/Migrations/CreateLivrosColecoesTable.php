@@ -6,10 +6,10 @@ use Biblioteca\Database;
 
 class CreateLivrosColecoesTable
 {
-    public static function up()
+    public static function up(): void
     {
-        $pdo = (new Database())->getPdo();
-        $sql = "CREATE TABLE IF NOT EXISTS livros_colecoes (
+        $pdo = new Database()->getPdo();
+        $sql = "CREATE TABLE IF NOT EXISTS colecoes (
             id_livro BIGINT NOT NULL,
             id_colecao BIGINT NOT NULL,
             PRIMARY KEY (id_livro, id_colecao),
@@ -21,7 +21,7 @@ class CreateLivrosColecoesTable
 
     public static function down()
     {
-        $pdo = (new Database())->getPdo();
+        $pdo = new Database()->getPdo();
         $pdo->exec('DROP TABLE IF EXISTS livros_colecoes');
     }
 }

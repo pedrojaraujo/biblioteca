@@ -8,7 +8,7 @@ class CreateLivrosTable
 {
     public static function up()
     {
-        $pdo = (new Database())->getPdo();
+        $pdo = new Database()->getPdo();
         $sql = "CREATE TABLE IF NOT EXISTS livros (
             id_livro BIGINT AUTO_INCREMENT PRIMARY KEY,
             titulo VARCHAR(255) NOT NULL,
@@ -29,7 +29,7 @@ class CreateLivrosTable
 
     public static function down()
     {
-        $pdo = (new Database())->getPdo();
+        $pdo = new Database()->getPdo();
         $pdo->exec("DROP TABLE IF EXISTS livros");
     }
 }

@@ -3,6 +3,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Biblioteca\Database;
+use Biblioteca\Database\Migrations\CreateColecoesTable;
+use Biblioteca\Database\Migrations\CreateEmprestimosTable;
 use Biblioteca\Database\Migrations\CreateUsuariosTable;
 use Biblioteca\Database\Migrations\CreateLivrosTable;
 use Biblioteca\Database\Seeds\DatabaseSeeder;
@@ -15,6 +17,8 @@ try {
     // Executar migrations
     CreateUsuariosTable::up();
     CreateLivrosTable::up();
+    CreateEmprestimosTable::up();
+    CreateColecoesTable::up();
     echo "Migrations executadas com sucesso!\n";
 
     // Executar seeds

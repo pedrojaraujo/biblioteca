@@ -5,13 +5,14 @@ namespace Biblioteca\Controllers;
 use Biblioteca\Models\Livro;
 use Biblioteca\Controllers\AuthController;
 use DateTime;
+use JetBrains\PhpStorm\NoReturn;
 use Smarty\Exception;
 
 class LivroController
 {
-    private $livroModel;
-    private $auth;
-    private $smarty;
+    private Livro $livroModel;
+    private \Biblioteca\Controllers\AuthController $auth;
+    private \Smarty\Smarty $smarty;
 
     public function __construct()
     {
@@ -20,10 +21,7 @@ class LivroController
         $this->smarty = getSmarty();
     }
 
-    /**
-     * @throws Exception
-     */
-    private function requireAuth()
+    private function requireAuth(): bool
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -67,28 +65,15 @@ class LivroController
                         }
                     }
                 }
-            } else {
-                if ($isDelete) {
-                    if (empty($data['id_livro'])) {
-                        return false;
-                    }
-                } else {
-                    if (empty($data['titulo']) || empty($data['autor']) || empty($data['editora']) ||
-                        empty($data['genero']) || empty($data['sinopse']) || empty($data['imagem']) ||
-                        !isset($data['estoque'])) {
-                        return false;
-                    }
-                }
             }
-        } else {
-            return false;
+
         }
         return true;
     }
 
 
-    private
-    function jsonResponse(array $data, int $statusCode = 200)
+    #[NoReturn] private
+    function jsonResponse(array $data, int $statusCode = 200): void
     {
         // Configurar o código de status HTTP
         http_response_code($statusCode);
@@ -103,7 +88,7 @@ class LivroController
         exit;
     }
 
-    private function redirect(string $url)
+    #[NoReturn] private function redirect(string $url): void
     {
         header('Location: ' . $url);
         exit;
@@ -141,7 +126,7 @@ class LivroController
     public function index()
     {
         error_log("\n=== Início do método index() ===");
-        
+
         if (!$this->requireAuth()) {
             error_log("Autenticação falhou - redirecionando para login");
             header('Location: /login');
@@ -151,7 +136,7 @@ class LivroController
         try {
             $decoded = $this->auth->validateToken();
             error_log("Token decodificado: " . print_r($decoded, true));
-            
+
             $tipo_usuario = $decoded->role;
             $id_usuario = $decoded->id_usuario;
 
@@ -160,7 +145,7 @@ class LivroController
 
             $livros = $this->livroModel->getAllBooks();
             error_log("Livros carregados: " . count($livros));
-            
+
             // Debug dos dados
             error_log("Dados para o template:");
             error_log("tipo_usuario: " . $tipo_usuario);

@@ -2,31 +2,39 @@
 
 namespace Biblioteca\Controllers;
 
+use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Biblioteca\Database;
+use JetBrains\PhpStorm\NoReturn;
 use PDO;
 
 class AuthController
 {
-    private $secretKey;
-    private $smarty;
+    private mixed $secretKey;
+    private \Smarty\Smarty $smarty;
 
+    /**
+     * @throws Exception
+     */
     public function __construct()
     {
         $this->smarty = getSmarty();
         $this->secretKey = $_ENV['JWT_SECRET_KEY'];
         if (!$this->secretKey) {
-            throw new \Exception('Chave secreta JWT não definida. Verifique o arquivo .env.');
+            throw new Exception('Chave secreta JWT não definida. Verifique o arquivo .env.');
         }
     }
 
-    public function showLoginPage()
+    /**
+     * @throws \Smarty\Exception
+     */
+    public function showLoginPage(): void
     {
         $this->smarty->display('auth/login.tpl');
     }
 
-    public function login()
+    public function login(): void
     {
         $logFile = __DIR__ . '/../../logs/auth.log';
         file_put_contents($logFile, "\n=== Início do processo de login ===\n", FILE_APPEND);
@@ -89,7 +97,7 @@ class AuthController
                 http_response_code(401);
                 echo json_encode(['error' => 'Credenciais inválidas']);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             file_put_contents($logFile, "Erro durante o login: " . $e->getMessage() . "\n", FILE_APPEND);
             file_put_contents($logFile, "Stack trace: " . $e->getTraceAsString() . "\n", FILE_APPEND);
             http_response_code(500);
@@ -97,7 +105,10 @@ class AuthController
         }
     }
 
-    public function logout()
+    /**
+     * @throws \Smarty\Exception
+     */
+    #[NoReturn] public function logout(): void
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -111,7 +122,7 @@ class AuthController
         exit;
     }
 
-    public function validateToken()
+    public function validateToken(): false|\stdClass
     {
         error_log("\n=== Validando Token ===");
         
@@ -131,7 +142,7 @@ class AuthController
             $decoded = JWT::decode($token, new Key($this->secretKey, 'HS256'));
             error_log("Token decodificado com sucesso: " . print_r($decoded, true));
             return $decoded;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             error_log("Erro ao decodificar token: " . $e->getMessage());
             return false;
         }
@@ -148,7 +159,10 @@ class AuthController
         return $usuario ? $usuario->id_usuario : null;
     }
 
-    private function setError($message)
+    /**
+     * @throws \Smarty\Exception
+     */
+    private function setError($message): void
     {
         $this->smarty->assign('error', $message);
         $this->smarty->display('error.tpl');

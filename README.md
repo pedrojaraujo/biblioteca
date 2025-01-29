@@ -16,7 +16,7 @@ O aplicativo visa fornecer funcionalidades básicas de gerenciamento de dados, c
 
 ## **Tecnologias Utilizadas**
 
-- **PHP 8.3:** Linguagem de programação principal para o desenvolvimento da aplicação.
+- **PHP 8:** Linguagem de programação principal para o desenvolvimento da aplicação.
 - **MySQL:** Banco de dados utilizado para armazenar os dados do sistema.
 - **JWT (JSON Web Tokens):** Utilizado para autenticação segura.
 - **Dotenv:** Para carregar variáveis de ambiente de forma segura.
@@ -70,7 +70,7 @@ Os testes foram realizados utilizando o **Postman**, onde foram validadas:
 4. **Inicie o projeto com Docker**:
 
    ```bash
-   docker-compose up --build -d
+   docker compose up --build -d
    ```
 
 5. **Acesse a aplicação**:

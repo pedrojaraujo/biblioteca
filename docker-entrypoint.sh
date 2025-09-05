@@ -50,7 +50,8 @@ echo "Aguardando MySQL..."
 max_tries=30
 count=0
 while [ $count -lt $max_tries ]; do
-    if mysqladmin ping -h"$DB_HOST" -u"$DB_USER" -p"$MYSQL_ROOT_PASSWORD" --silent; then
+   if php -r "try { new PDO('mysql:host=$DB_HOST;port=3306', 'root', '$MYSQL_ROOT_PASSWORD'); exit(0); } catch(Exception \$e) { exit(1); }" 2>/dev/null; then
+        echo "MySQL está pronto!"
         break
     fi
     echo "Tentando conectar ao MySQL... ($((count + 1))/$max_tries)"

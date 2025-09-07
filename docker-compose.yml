@@ -39,8 +39,6 @@ services:
     environment:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
     command:
       - --default-authentication-plugin=caching_sha2_password
       - --character-set-server=utf8mb4

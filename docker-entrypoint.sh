@@ -67,6 +67,8 @@ fi
 # Verificar se o autoload.php existe
 if [ ! -f /var/www/html/vendor/autoload.php ]; then
     echo "Erro: autoload.php não encontrado. Instalando dependências do Composer..."
+    # Permitir uso do diretório mesmo com propriedade diferente
+    git config --global --add safe.directory /var/www/html
     composer install --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
 fi
 
@@ -79,4 +81,4 @@ rm -f /var/run/apache2/apache2.pid
 
 # Inicia o Apache em primeiro plano
 echo "Iniciando Apache..."
-exec apache2-foreground 
+exec apache2-foreground

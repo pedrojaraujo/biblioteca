@@ -51969,3 +51969,608 @@
     [0] => /var/www/html/src/views/configs/
 )
 
+[Mon Sep 08 00:04:44.465037 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.65 (Debian) PHP/8.4.12 configured -- resuming normal operations
+[Mon Sep 08 00:04:44.465397 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:14 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:14 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:14 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:15 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:15 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:15 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:15 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:15 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:15 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:15 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:15 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:15 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:15 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:05:15 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:05:15 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:05:15 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[Mon Sep 08 00:05:34.047904 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Mon Sep 08 00:08:25.006861 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.65 (Debian) PHP/8.4.12 configured -- resuming normal operations
+[Mon Sep 08 00:08:25.007229 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:30 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:30 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:30 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty template dir: Array
+(
+    [0] => /var/www/html/src/views/templates/
+)
+
+[08-Sep-2025 00:08:31 UTC] Smarty compile dir: /var/www/html/src/views/templates_c/
+[08-Sep-2025 00:08:31 UTC] Smarty cache dir: /var/www/html/src/views/cache/
+[08-Sep-2025 00:08:31 UTC] Smarty config dir: Array
+(
+    [0] => /var/www/html/src/views/configs/
+)
+

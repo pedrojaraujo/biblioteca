@@ -5,7 +5,12 @@ services:
       - "8000:80"
     restart: always
     volumes:
-      - .:/var/www/html
+      - type: bind
+        source: .
+        target: /var/www/html
+        bind:
+          create_host_path: true
+          propagation: rprivate
       - ./logs/apache2:/var/log/apache2
     logging:
       driver: json-file
@@ -13,16 +18,16 @@ services:
         max-size: "10m"
         max-file: "3"
     environment:
-      - DB_HOST=${DB_HOST}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
-      - APACHE_DOCUMENT_ROOT=/var/www/html/public
-      - PHP_MEMORY_LIMIT=256M
-      - UPLOAD_MAX_FILESIZE=10M
-      - POST_MAX_SIZE=10M
+      DB_HOST: db
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+      PHP_MEMORY_LIMIT: 256M
+      UPLOAD_MAX_FILESIZE: 10M
+      POST_MAX_SIZE: 10M
     env_file:
       - .env
     depends_on:
@@ -31,11 +36,11 @@ services:
 
   db:
     image: mysql:8.0
-    ports:
-      - "3308:3306"
     environment:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
     command:
       - --default-authentication-plugin=caching_sha2_password
       - --character-set-server=utf8mb4
@@ -46,6 +51,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/init:/docker-entrypoint-initdb.d 
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 5s

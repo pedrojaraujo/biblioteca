@@ -49,35 +49,45 @@ Os testes foram realizados utilizando o **Postman**, onde foram validadas:
 
 ## **Como Rodar o Projeto**
 
-1. **Clone o repositório**:
+### Pré-requisitos
+
+- Docker (versão >= 20.10)
+- Docker Compose (versão >= 2.x)
+- Git
+
+### Passos
+
+1. Clone o repositório:
 
    ```bash
    git clone https://github.com/pedrojaraujo/biblioteca.git
-   ```
-
-2. **Navegue até o diretório do projeto**:
-
-   ```bash
    cd biblioteca
    ```
 
-3. **Configure o arquivo `.env`**:
+2. Crie o arquivo de variáveis de ambiente:
 
    ```bash
    cp .env.example .env
    ```
 
-4. **Inicie o projeto com Docker**:
+3. Inicie os containers em background:
 
    ```bash
-   docker compose up --build -d
+   docker compose up -d
    ```
 
-5. **Acesse a aplicação**:
+4. Acesse a aplicação no navegador:
 
-   - No navegador, vá para: [http://localhost:8000](http://localhost:8000)
+   ```plaintext
+   http://localhost:8000
+   ```
+
+5. Para parar e remover os containers:
+
+   ```bash
+   docker compose down
+   ```
 
 ## **Licença**
 
 Este projeto é licenciado sob os termos da licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para obter mais detalhes.
-

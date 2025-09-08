@@ -61,7 +61,9 @@ RUN a2ensite 000-default
 
 # Adicione um script de inicialização
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# Converter CRLF para LF e garantir permissão de execução
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Configurar diretório de logs do Apache
 RUN mkdir -p /var/log/apache2 \
@@ -93,4 +95,5 @@ RUN { \
 EXPOSE 80
 
 # Comando para iniciar o servidor Apache
-CMD ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
